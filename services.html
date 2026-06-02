@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Browse our IT services - AnyDesk support, virus removal, software installation, hardware diagnosis, network setup, and data recovery. Starting at $39."
+    />
+    <meta
+      name="keywords"
+      content="IT services, AnyDesk support, virus removal, software installation, hardware diagnosis, network setup, data recovery, tech support"
+    />
+    <meta name="author" content="IT Pro Solutions" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="IT Services - IT Pro Solutions" />
+    <meta
+      property="og:description"
+      content="Professional IT services starting at $39. Remote support available 24/7."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/images/branding/logo.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="IT Services - IT Pro Solutions" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="assets/images/branding/favicon.ico"
+    />
+    <link rel="apple-touch-icon" href="assets/images/branding/logo.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>IT Services - Remote Tech Support | IT Pro Solutions</title>
+
+    <style>
+      .services-header {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+      }
+      .services-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("assets/images/backgrounds/services-bg.jpg");
+        background-size: cover;
+        opacity: 0.1;
+      }
+      .services-header h1,
+      .services-header p {
+        position: relative;
+        z-index: 1;
+      }
+      .services-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+      .filters {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding: 2rem;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        padding: 0.5rem 1.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: #667eea;
+        transform: translateY(-2px);
+      }
+      .service-card {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 1.5rem;
+        transition: all 0.3s;
+        text-align: center;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .service-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .service-image {
+        width: 100%;
+        height: 160px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+      }
+      .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+      .service-card:hover .service-image img {
+        transform: scale(1.05);
+      }
+      .service-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+      .service-card h2 {
+        color: #ffd89b;
+        margin: 0.5rem 0;
+      }
+
+      /* Cart Styles */
+      .cart-toggle {
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1999;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s;
+      }
+      .cart-toggle:hover {
+        transform: scale(1.1);
+      }
+      .cart-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #ff4444;
+        color: white;
+        border-radius: 50%;
+        min-width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 0 6px;
+      }
+      .cart-sidebar {
+        position: fixed;
+        right: -450px;
+        top: 0;
+        width: 450px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 2000;
+        transition: right 0.3s ease;
+        overflow-y: auto;
+        border-left: 2px solid #667eea;
+      }
+      .cart-sidebar.open {
+        right: 0;
+      }
+      .cart-header {
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .close-cart {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.2rem;
+      }
+      .cart-items-container {
+        padding: 1rem;
+        min-height: 300px;
+      }
+      .cart-item-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+      .cart-item-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(102, 126, 234, 0.3);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .cart-item-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .cart-item-details {
+        flex: 1;
+      }
+      .cart-item-name {
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+      }
+      .cart-item-price {
+        color: #ffd89b;
+        font-size: 0.9rem;
+      }
+      .quantity-controls {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+      .qty-btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 25px;
+        height: 25px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .cart-item-subtotal {
+        font-weight: bold;
+        color: #ffd89b;
+        min-width: 70px;
+        text-align: right;
+      }
+      .remove-item {
+        background: rgba(255, 68, 68, 0.2);
+        border: none;
+        color: #ff4444;
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .empty-cart {
+        text-align: center;
+        padding: 2rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .cart-footer {
+        position: sticky;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+      }
+      .summary-row.total {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #ffd89b;
+        border-top: 2px solid rgba(255, 255, 255, 0.1);
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+      }
+      .checkout-btn,
+      .continue-shopping {
+        width: 100%;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 0.5rem;
+      }
+      .checkout-btn {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+      }
+      .continue-shopping {
+        background: transparent;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .toast-notification {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        background: #4caf50;
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        z-index: 2001;
+        animation: slideIn 0.3s ease;
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @media (max-width: 768px) {
+        .cart-sidebar {
+          width: 100%;
+          right: -100%;
+        }
+        .services-header h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <h2>IT<span class="highlight">Pro</span></h2>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">HOME</a>
+          <a href="services.html" class="active">SERVICES</a>
+          <a href="company.html">COMPANY</a>
+          <a href="dashboard.html">DASHBOARD</a>
+          <a href="news.html">NEWS</a>
+          <a href="pages/login.html">LOGIN</a>
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search services..."
+          />
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </nav>
+
+    <div class="services-header">
+      <h1>Our IT Services</h1>
+      <p>Choose from a wide range of professional IT solutions</p>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" data-category="all">
+        All Services
+      </button>
+      <button class="filter-btn" data-category="Remote Support">
+        Remote Support
+      </button>
+      <button class="filter-btn" data-category="Security">Security</button>
+      <button class="filter-btn" data-category="Software">Software</button>
+      <button class="filter-btn" data-category="Hardware">Hardware</button>
+      <button class="filter-btn" data-category="Network">Network</button>
+      <button class="filter-btn" data-category="Data">Data</button>
+    </div>
+
+    <div class="services-grid" id="allServicesGrid"></div>
+
+    <!-- Cart Button -->
+    <div class="cart-toggle" onclick="toggleCart()">
+      <i class="fas fa-shopping-cart fa-2x"></i>
+      <span class="cart-badge" id="cartCount">0</span>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <h2><i class="fas fa-shopping-bag"></i> Your Cart</h2>
+        <button class="close-cart" onclick="toggleCart()">✕</button>
+      </div>
+      <div class="cart-items-container" id="cartItemsContainer"></div>
+      <div class="cart-footer" id="cartFooter"></div>
+    </div>
+
+    <script>
+      const services = [
+        {
+          id: 1,
+          name: "AnyDesk Support",
+          price: 49,
+          category: "Remote Support",
+          description: "24/7 remote assistance via AnyDesk",
+          image: "assets/images/services/anydesk-support.jpg",
+        },
+        {
+          id: 2,
+          name: "Virus Removal",
+          price: 79,
+          category: "Security",
+          description: "Complete malware and virus cleanup",
+          image: "assets/images/services/virus-removal.jpg",
+        },
+        {
+          id: 3,
+          name: "Software Installation",
+          price: 39,
+          category: "Software",
+          description: "Any software installation & configuration",
+          image: "assets/images/services/software-install.jpg",
+        },
+        {
+          id: 4,
+          name: "Hardware Diagnosis",
+          price: 59,
+          category: "Hardware",
+          description: "Full hardware diagnostic checkup",
+          image: "assets/images/services/hardware-diagnosis.jpg",
+        },
+        {
+          id: 5,
+          name: "Network Setup",
+          price: 99,
+          category: "Network",
+          description: "Router, WiFi & network configuration",
+          image: "assets/images/services/network-setup.jpg",
+        },
+        {
+          id: 6,
+          name: "Data Recovery",
+          price: 149,
+          category: "Data",
+          description: "Lost or deleted data recovery",
+          image: "assets/images/services/data-recovery.jpg",
+        },
+        {
+          id: 7,
+          name: "Security Audit",
+          price: 89,
+          category: "Security",
+          description: "Complete security assessment",
+          image: "assets/images/services/security.jpg",
+        },
+        {
+          id: 8,
+          name: "Cloud Setup",
+          price: 69,
+          category: "Network",
+          description: "Cloud storage configuration",
+          image: "assets/images/services/cloud-setup.jpg",
+        },
+      ];
+
+      let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      let currentFilter = "all";
+      let currentSearch = "";
+
+      function displayServices() {
+        const grid = document.getElementById("allServicesGrid");
+        let filtered = services;
+        if (currentFilter !== "all")
+          filtered = filtered.filter((s) => s.category === currentFilter);
+        if (currentSearch)
+          filtered = filtered.filter(
+            (s) =>
+              s.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
+              s.description.toLowerCase().includes(currentSearch.toLowerCase()),
+          );
+
+        grid.innerHTML = filtered
+          .map(
+            (service) => `
+                <div class="service-card">
+                    <div class="service-image"><img src="${service.image}" alt="${service.name}" onerror="this.src='https://via.placeholder.com/300x160?text=${service.name}'"></div>
+                    <h3>${service.name}</h3>
+                    <p>${service.description}</p>
+                    <p><small>${service.category}</small></p>
+                    <h2>$${service.price}</h2>
+                    <button class="btn-primary" onclick="addToCart(${service.id})"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            `,
+          )
+          .join("");
+      }
+
+      function addToCart(serviceId) {
+        const service = services.find((s) => s.id === serviceId);
+        const existingItem = cart.find((item) => item.id === serviceId);
+        if (existingItem) {
+          existingItem.quantity++;
+          showToast(`${service.name} quantity updated`);
+        } else {
+          cart.push({
+            id: service.id,
+            name: service.name,
+            price: service.price,
+            quantity: 1,
+            image: service.image,
+          });
+          showToast(`${service.name} added to cart!`);
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartDisplay();
+      }
+
+      function updateQuantity(serviceId, change) {
+        const itemIndex = cart.findIndex((i) => i.id === serviceId);
+        if (itemIndex === -1) return;
+        const newQuantity = cart[itemIndex].quantity + change;
+        if (newQuantity <= 0) {
+          cart.splice(itemIndex, 1);
+          showToast("Item removed");
+        } else {
+          cart[itemIndex].quantity = newQuantity;
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartDisplay();
+      }
+
+      function removeFromCart(serviceId) {
+        cart = cart.filter((item) => item.id !== serviceId);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartDisplay();
+        showToast("Item removed");
+      }
+
+      function updateCartDisplay() {
+        const container = document.getElementById("cartItemsContainer");
+        const footer = document.getElementById("cartFooter");
+        const cartCountSpan = document.getElementById("cartCount");
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCountSpan.textContent = totalItems;
+
+        if (cart.length === 0) {
+          container.innerHTML = `<div class="empty-cart"><i class="fas fa-shopping-cart fa-3x"></i><h3>Your cart is empty</h3><p>Add some services to get started</p></div>`;
+          footer.innerHTML = `<button class="continue-shopping" onclick="toggleCart()"><i class="fas fa-arrow-left"></i> Continue Shopping</button>`;
+          return;
+        }
+
+        container.innerHTML = cart
+          .map(
+            (item) => `
+                <div class="cart-item-card">
+                    <div class="cart-item-icon"><img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/50x50'"></div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">$${item.price}</div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="cart-item-subtotal">$${(item.price * item.quantity).toFixed(2)}</div>
+                    <button class="remove-item" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
+                </div>
+            `,
+          )
+          .join("");
+
+        const subtotal = cart.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0,
+        );
+        const tax = subtotal * 0.1;
+        const delivery = subtotal > 100 ? 0 : 5;
+        const total = subtotal + tax + delivery;
+
+        footer.innerHTML = `
+                <div class="cart-summary">
+                    <div class="summary-row"><span>Subtotal (${totalItems} items)</span><span>$${subtotal.toFixed(2)}</span></div>
+                    <div class="summary-row"><span>Tax (10%)</span><span>$${tax.toFixed(2)}</span></div>
+                    <div class="summary-row"><span>Delivery</span><span>${delivery === 0 ? "FREE" : "$" + delivery.toFixed(2)}</span></div>
+                    <div class="summary-row total"><span>Total</span><span>$${total.toFixed(2)}</span></div>
+                </div>
+                <button class="checkout-btn" onclick="checkout()"><i class="fas fa-credit-card"></i> Checkout</button>
+                <button class="continue-shopping" onclick="toggleCart()">Continue Shopping</button>
+            `;
+      }
+
+      function showToast(message) {
+        const toast = document.createElement("div");
+        toast.className = "toast-notification";
+        toast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+      }
+
+      function toggleCart() {
+        document.getElementById("cartSidebar").classList.toggle("open");
+      }
+      function checkout() {
+        if (cart.length === 0) {
+          showToast("Your cart is empty!");
+          return;
+        }
+        showToast("Proceeding to checkout...");
+        setTimeout(() => (window.location.href = "pages/checkout.html"), 1000);
+      }
+
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          document
+            .querySelectorAll(".filter-btn")
+            .forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+          currentFilter = this.dataset.category;
+          displayServices();
+        });
+      });
+
+      document.getElementById("searchInput").addEventListener("input", (e) => {
+        currentSearch = e.target.value;
+        displayServices();
+      });
+      displayServices();
+      updateCartDisplay();
+    </script>
+  </body>
+</html>

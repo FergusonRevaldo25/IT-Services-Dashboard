@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Create your IT Pro Solutions account to access professional IT services, track orders, and get remote support."
+    />
+    <meta
+      name="keywords"
+      content="signup, create account, IT support registration, customer account"
+    />
+    <meta name="author" content="IT Pro Solutions" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sign Up - IT Pro Solutions" />
+    <meta
+      property="og:description"
+      content="Create your account and get instant IT support"
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../assets/images/branding/favicon.ico"
+    />
+    <link rel="apple-touch-icon" href="../assets/images/branding/logo.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Sign Up - IT Pro Solutions | Create Your Account</title>
+
+    <style>
+      .signup-container {
+        min-height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+      }
+      .signup-box {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 550px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .signup-box h2 {
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+      .signup-subtitle {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .input-group {
+        margin-bottom: 1rem;
+      }
+      .input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+      .input-group input {
+        width: 100%;
+        padding: 0.85rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: all 0.3s;
+      }
+      .input-group input:focus {
+        outline: none;
+        border-color: #667eea;
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .input-group input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Password strength meter */
+      .password-strength {
+        margin-top: 0.5rem;
+      }
+      .strength-bar {
+        height: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .strength-fill {
+        height: 100%;
+        width: 0%;
+        transition:
+          width 0.3s,
+          background 0.3s;
+      }
+      .strength-text {
+        font-size: 0.7rem;
+        margin-top: 0.25rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Terms & Conditions */
+      .terms {
+        margin: 1.25rem 0;
+      }
+      .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        font-size: 0.8rem;
+      }
+      .checkbox-label a {
+        color: #ffd89b;
+        text-decoration: none;
+      }
+      .checkbox-label a:hover {
+        text-decoration: underline;
+      }
+
+      /* Signup Button */
+      .signup-btn {
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .signup-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+      }
+      .signup-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* Login Link */
+      .login-link {
+        text-align: center;
+        margin-top: 1.5rem;
+        font-size: 0.85rem;
+      }
+      .login-link a {
+        color: #ffd89b;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+
+      /* Error & Success Messages */
+      .error-message {
+        background: rgba(244, 67, 54, 0.2);
+        border: 1px solid #f44336;
+        border-radius: 10px;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        color: #ff8888;
+        display: none;
+      }
+      .success-message {
+        background: rgba(76, 175, 80, 0.2);
+        border: 1px solid #4caf50;
+        border-radius: 10px;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        color: #8bc34a;
+        display: none;
+      }
+
+      /* Responsive */
+      @media (max-width: 550px) {
+        .signup-box {
+          padding: 1.5rem;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <h2>IT<span class="highlight">Pro</span></h2>
+        </div>
+        <div class="nav-links">
+          <a href="../index.html">HOME</a>
+          <a href="../services.html">SERVICES</a>
+          <a href="../company.html">COMPANY</a>
+          <a href="../dashboard.html">DASHBOARD</a>
+          <a href="../news.html">NEWS</a>
+          <a href="login.html">LOGIN</a>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Search..." />
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </nav>
+
+    <div class="signup-container">
+      <div class="signup-box">
+        <h2><i class="fas fa-user-plus"></i> Create Account</h2>
+        <div class="signup-subtitle">
+          Join IT Pro Solutions and get instant IT support
+        </div>
+
+        <div id="errorMessage" class="error-message"></div>
+        <div id="successMessage" class="success-message"></div>
+
+        <form id="signupForm">
+          <div class="form-row">
+            <div class="input-group">
+              <label><i class="fas fa-user"></i> First Name</label>
+              <input type="text" id="firstName" placeholder="John" required />
+            </div>
+            <div class="input-group">
+              <label><i class="fas fa-user"></i> Last Name</label>
+              <input type="text" id="lastName" placeholder="Doe" required />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label><i class="fas fa-envelope"></i> Email Address</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label><i class="fas fa-phone"></i> Phone Number (Optional)</label>
+            <input type="tel" id="phone" placeholder="+1 234 567 8900" />
+          </div>
+
+          <div class="input-group">
+            <label><i class="fas fa-key"></i> Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Create a strong password"
+              required
+            />
+            <div class="password-strength">
+              <div class="strength-bar">
+                <div class="strength-fill" id="strengthFill"></div>
+              </div>
+              <div class="strength-text" id="strengthText">
+                Enter a password
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label><i class="fas fa-check-circle"></i> Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="Confirm your password"
+              required
+            />
+          </div>
+
+          <div class="terms">
+            <label class="checkbox-label">
+              <input type="checkbox" id="termsCheckbox" required />
+              I agree to the <a href="#">Terms of Service</a> and
+              <a href="#">Privacy Policy</a>
+            </label>
+          </div>
+
+          <button type="submit" class="signup-btn" id="signupBtn">
+            <i class="fas fa-user-plus"></i> Create Account
+          </button>
+        </form>
+
+        <div class="login-link">
+          <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Password strength checker
+      function checkPasswordStrength(password) {
+        let strength = 0;
+        let message = "";
+        let color = "#f44336";
+
+        if (password.length >= 8) strength++;
+        if (password.match(/[a-z]+/)) strength++;
+        if (password.match(/[A-Z]+/)) strength++;
+        if (password.match(/[0-9]+/)) strength++;
+        if (password.match(/[$@#&!]+/)) strength++;
+
+        switch (strength) {
+          case 0:
+          case 1:
+            message = "Weak password";
+            color = "#f44336";
+            break;
+          case 2:
+            message = "Fair password";
+            color = "#ff9800";
+            break;
+          case 3:
+            message = "Good password";
+            color = "#2196f3";
+            break;
+          case 4:
+          case 5:
+            message = "Strong password!";
+            color = "#4caf50";
+            break;
+        }
+
+        document.getElementById("strengthFill").style.width =
+          strength * 20 + "%";
+        document.getElementById("strengthFill").style.background = color;
+        document.getElementById("strengthText").textContent =
+          message || "Enter a password";
+        return strength >= 3;
+      }
+
+      // Show error message
+      function showError(message) {
+        const errorDiv = document.getElementById("errorMessage");
+        errorDiv.textContent = message;
+        errorDiv.style.display = "block";
+        setTimeout(() => {
+          errorDiv.style.display = "none";
+        }, 4000);
+      }
+
+      function showSuccess(message) {
+        const successDiv = document.getElementById("successMessage");
+        successDiv.textContent = message;
+        successDiv.style.display = "block";
+        setTimeout(() => {
+          successDiv.style.display = "none";
+        }, 3000);
+      }
+
+      // Validate email format
+      function isValidEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+
+      // Signup form submission
+      document.getElementById("signupForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+        const termsAccepted = document.getElementById("termsCheckbox").checked;
+
+        // Validation
+        if (!firstName || !lastName) {
+          showError("Please enter your full name");
+          return;
+        }
+
+        if (!email || !isValidEmail(email)) {
+          showError("Please enter a valid email address");
+          return;
+        }
+
+        if (!password) {
+          showError("Please enter a password");
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          showError("Passwords do not match");
+          return;
+        }
+
+        if (!checkPasswordStrength(password)) {
+          showError(
+            "Please use a stronger password (min 8 chars, mix of letters, numbers, symbols)",
+          );
+          return;
+        }
+
+        if (!termsAccepted) {
+          showError("Please accept the Terms of Service and Privacy Policy");
+          return;
+        }
+
+        // Simulate account creation
+        showSuccess("Account created successfully! Redirecting to login...");
+
+        // Store user data in localStorage (demo only)
+        const userData = {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          phone: phone,
+          created: new Date().toISOString(),
+        };
+        localStorage.setItem("userData", JSON.stringify(userData));
+
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 2000);
+      });
+
+      // Real-time password strength check
+      document.getElementById("password").addEventListener("input", (e) => {
+        checkPasswordStrength(e.target.value);
+      });
+
+      // Real-time password match check
+      document
+        .getElementById("confirmPassword")
+        .addEventListener("input", (e) => {
+          const password = document.getElementById("password").value;
+          const confirm = e.target.value;
+          if (password && confirm && password !== confirm) {
+            e.target.style.borderColor = "#f44336";
+          } else {
+            e.target.style.borderColor = "rgba(255,255,255,0.2)";
+          }
+        });
+    </script>
+  </body>
+</html>

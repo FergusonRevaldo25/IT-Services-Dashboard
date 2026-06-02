@@ -1,0 +1,179 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="IT Pro Solutions - Professional remote IT support via AnyDesk. 24/7 technical assistance, virus removal, software installation, hardware diagnostics, and network setup."
+    />
+    <meta
+      name="keywords"
+      content="IT support, remote support, AnyDesk, virus removal, tech support, computer repair, software installation, hardware diagnosis, network setup, data recovery"
+    />
+    <meta name="author" content="IT Pro Solutions" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="IT Pro Solutions - Remote IT Support 24/7"
+    />
+    <meta
+      property="og:description"
+      content="Professional IT services delivered remotely via AnyDesk. Fast, reliable, and affordable."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/images/branding/logo.png" />
+    <meta property="og:site_name" content="IT Pro Solutions" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="IT Pro Solutions - Remote IT Support" />
+    <meta
+      name="twitter:description"
+      content="24/7 professional IT support via AnyDesk."
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="assets/images/branding/favicon.ico"
+    />
+    <link rel="apple-touch-icon" href="assets/images/branding/logo.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>IT Pro Solutions - Remote IT Services 24/7</title>
+
+    <style>
+      .hero {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(102, 126, 234, 0.85),
+            rgba(118, 75, 162, 0.85)
+          ),
+          url("assets/images/backgrounds/hero-bg.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+      .logo img {
+        height: 40px;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <img
+            src="assets/images/branding/logo.png"
+            alt="IT Pro Logo"
+            onerror="this.style.display = 'none'"
+          />
+          <h2>IT<span class="highlight">Pro</span></h2>
+        </div>
+        <div class="nav-links">
+          <a href="index.html" class="active">HOME</a>
+          <a href="services.html">SERVICES</a>
+          <a href="company.html">COMPANY</a>
+          <a href="dashboard.html">DASHBOARD</a>
+          <a href="news.html">NEWS</a>
+          <a href="pages/login.html">LOGIN</a>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Search services..." />
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>IT Solutions <span class="gradient-text">Anywhere</span></h1>
+          <p>
+            Remote tech support via AnyDesk | Software solutions | Hardware
+            consultations | 24/7 Availability
+          </p>
+          <div class="hero-buttons">
+            <a href="services.html" class="btn-primary">Explore Services</a>
+            <a href="pages/login.html" class="btn-secondary">Login Here →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="services-preview">
+        <h2>Popular IT Services</h2>
+        <div class="services-grid" id="servicesGrid"></div>
+      </section>
+
+      <section class="stats">
+        <div class="stat-card">
+          <i class="fas fa-chart-line"></i>
+          <h3 id="revenue">$12,450</h3>
+          <p>Revenue This Month</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-users"></i>
+          <h3 id="activeServices">247</h3>
+          <p>Active Services</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-clock"></i>
+          <h3 id="hoursLogged">1,892</h3>
+          <p>Hours Logged</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-smile"></i>
+          <h3>10,000+</h3>
+          <p>Happy Clients</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/main.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "IT Pro Solutions",
+        "description": "Professional remote IT support services via AnyDesk",
+        "url": "https://yourdomain.com",
+        "priceRange": "$$",
+        "openingHours": "Mo-Su 00:00-23:59"
+      }
+    </script>
+  </body>
+</html>

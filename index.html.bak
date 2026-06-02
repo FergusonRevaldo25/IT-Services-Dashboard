@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Pro Solutions - Remote IT Services</title>
+    <link
+      rel="icon"
+      href="assets/images/branding/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .hero {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("assets/images/backgrounds/hero-bg.jpg");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.4;
+        z-index: 0;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+      .logo img {
+        height: 40px;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <img
+            src="assets/images/branding/logo.png"
+            alt="IT Pro Logo"
+            onerror="this.style.display = 'none'"
+          />
+          <h2>IT<span class="highlight">Pro</span></h2>
+        </div>
+        <div class="nav-links">
+          <a href="index.html" class="active">HOME</a>
+          <a href="services.html">SERVICES</a>
+          <a href="company.html">COMPANY</a>
+          <a href="dashboard.html">DASHBOARD</a>
+          <a href="news.html">NEWS</a>
+          <a href="pages/login.html">LOGIN</a>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Type to Search..." />
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>IT Solutions <span class="gradient-text">Anywhere</span></h1>
+          <p>
+            Remote tech support via AnyDesk | Software solutions | Hardware
+            consultations
+          </p>
+          <div class="hero-buttons">
+            <a href="services.html" class="btn-primary">Explore Services</a>
+            <a href="pages/login.html" class="btn-secondary">Login Here →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="services-preview">
+        <h2>Popular IT Services</h2>
+        <div class="services-grid" id="servicesGrid"></div>
+      </section>
+
+      <section class="stats">
+        <div class="stat-card">
+          <i class="fas fa-chart-line"></i>
+          <h3 id="revenue">$12,450</h3>
+          <p>Revenue This Month</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-users"></i>
+          <h3 id="activeServices">247</h3>
+          <p>Active Services</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-clock"></i>
+          <h3 id="hoursLogged">1,892</h3>
+          <p>Hours Logged</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

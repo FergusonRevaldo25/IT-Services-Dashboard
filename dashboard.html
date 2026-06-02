@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="IT Pro Solutions Business Dashboard - Track revenue, orders, and analytics in real-time."
+    />
+    <meta
+      name="keywords"
+      content="IT dashboard, business analytics, revenue tracking, IT metrics"
+    />
+    <meta name="author" content="IT Pro Solutions" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Business Dashboard - IT Pro Solutions" />
+    <meta
+      property="og:description"
+      content="Real-time analytics and revenue tracking dashboard"
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="assets/images/branding/favicon.ico"
+    />
+    <link rel="apple-touch-icon" href="assets/images/branding/logo.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Dashboard - IT Pro Solutions Analytics</title>
+
+    <style>
+      body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      }
+      .dashboard-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .dashboard-header {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        margin-bottom: 2rem;
+      }
+      .dashboard-header h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .stats-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem;
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+      .stats-card:hover {
+        transform: translateY(-5px);
+      }
+      .stats-card i {
+        font-size: 2rem;
+        color: #ffd89b;
+        margin-bottom: 0.5rem;
+      }
+      .stats-card h3 {
+        font-size: 1.8rem;
+        margin: 0.5rem 0;
+      }
+      .stats-card p {
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
+      .charts-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+      .chart-box {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem;
+        border-radius: 15px;
+      }
+      .chart-box h3 {
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .recent-orders {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem;
+        border-radius: 15px;
+        overflow-x: auto;
+      }
+      .recent-orders h3 {
+        margin-bottom: 1rem;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 500px;
+      }
+      th,
+      td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      th {
+        color: #ffd89b;
+      }
+      .status {
+        padding: 0.25rem 0.5rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        display: inline-block;
+      }
+      .status.completed {
+        background: #4caf50;
+      }
+      .status.pending {
+        background: #ff9800;
+      }
+      .status.processing {
+        background: #2196f3;
+      }
+      .status.cancelled {
+        background: #f44336;
+      }
+
+      @media (max-width: 768px) {
+        .dashboard-container {
+          padding: 1rem;
+        }
+        .charts-container {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+        .stats-card h3 {
+          font-size: 1.3rem;
+        }
+        .dashboard-header h1 {
+          font-size: 1.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Animation for numbers */
+      @keyframes countUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .stats-card h3 {
+        animation: countUp 0.5s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <h2>IT<span class="highlight">Pro</span></h2>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">HOME</a>
+          <a href="services.html">SERVICES</a>
+          <a href="company.html">COMPANY</a>
+          <a href="dashboard.html" class="active">DASHBOARD</a>
+          <a href="news.html">NEWS</a>
+          <a href="pages/login.html">LOGIN</a>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Search..." />
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </nav>
+
+    <div class="dashboard-container">
+      <div class="dashboard-header">
+        <h1><i class="fas fa-chart-line"></i> Business Dashboard</h1>
+        <p>
+          Real-time analytics and revenue tracking | Last updated:
+          <span id="lastUpdated">Just now</span>
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stats-card">
+          <i class="fas fa-dollar-sign"></i>
+          <h3 id="totalRevenue">$0</h3>
+          <p>Total Revenue (Lifetime)</p>
+          <small>↑ 23% from last month</small>
+        </div>
+        <div class="stats-card">
+          <i class="fas fa-shopping-cart"></i>
+          <h3 id="totalOrders">0</h3>
+          <p>Total Orders</p>
+          <small>↑ 12% from last month</small>
+        </div>
+        <div class="stats-card">
+          <i class="fas fa-users"></i>
+          <h3 id="activeUsers">0</h3>
+          <p>Active Users</p>
+          <small>↑ 8% from last month</small>
+        </div>
+        <div class="stats-card">
+          <i class="fas fa-chart-line"></i>
+          <h3 id="conversionRate">0%</h3>
+          <p>Conversion Rate</p>
+          <small>↑ 5% from last month</small>
+        </div>
+        <div class="stats-card">
+          <i class="fas fa-star"></i>
+          <h3 id="avgRating">4.9</h3>
+          <p>Average Rating</p>
+          <small>Based on 1,247 reviews</small>
+        </div>
+        <div class="stats-card">
+          <i class="fas fa-clock"></i>
+          <h3 id="avgResponse">4.8</h3>
+          <p>Avg Response (min)</p>
+          <small>↓ 0.5 from last month</small>
+        </div>
+      </div>
+
+      <div class="charts-container">
+        <div class="chart-box">
+          <h3><i class="fas fa-chart-line"></i> Revenue Overview (2024)</h3>
+          <canvas id="revenueChart"></canvas>
+        </div>
+        <div class="chart-box">
+          <h3><i class="fas fa-chart-bar"></i> Most Popular Services</h3>
+          <canvas id="servicesChart"></canvas>
+        </div>
+      </div>
+
+      <div class="recent-orders">
+        <h3><i class="fas fa-history"></i> Recent Orders</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Service</th>
+              <th>Customer</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="ordersBody">
+            <tr>
+              <td colspan="6" style="text-align: center">Loading orders...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      // Revenue data (monthly)
+      const monthlyRevenue = [
+        8450, 9230, 10200, 11500, 12450, 13800, 15200, 16800, 17500, 18900,
+        20100, 22350,
+      ];
+      const totalRevenue = monthlyRevenue.reduce((a, b) => a + b, 0);
+
+      // Service popularity data
+      const serviceNames = [
+        "AnyDesk Support",
+        "Virus Removal",
+        "Software Install",
+        "Hardware Diagnosis",
+        "Network Setup",
+        "Data Recovery",
+      ];
+      const servicePopularity = [245, 189, 167, 134, 98, 76];
+
+      // Recent orders data
+      const recentOrders = [
+        {
+          id: "#ORD4521",
+          service: "AnyDesk Support",
+          customer: "john****@gmail.com",
+          amount: 49,
+          status: "completed",
+          date: "2024-06-02",
+        },
+        {
+          id: "#ORD4520",
+          service: "Virus Removal",
+          customer: "sarah****@yahoo.com",
+          amount: 79,
+          status: "completed",
+          date: "2024-06-01",
+        },
+        {
+          id: "#ORD4519",
+          service: "Software Installation",
+          customer: "mike****@outlook.com",
+          amount: 39,
+          status: "processing",
+          date: "2024-06-01",
+        },
+        {
+          id: "#ORD4518",
+          service: "Data Recovery",
+          customer: "lisa****@gmail.com",
+          amount: 149,
+          status: "pending",
+          date: "2024-05-31",
+        },
+        {
+          id: "#ORD4517",
+          service: "Network Setup",
+          customer: "david****@company.com",
+          amount: 99,
+          status: "completed",
+          date: "2024-05-30",
+        },
+        {
+          id: "#ORD4516",
+          service: "Hardware Diagnosis",
+          customer: "emma****@gmail.com",
+          amount: 59,
+          status: "completed",
+          date: "2024-05-30",
+        },
+        {
+          id: "#ORD4515",
+          service: "Security Audit",
+          customer: "alex****@business.com",
+          amount: 89,
+          status: "processing",
+          date: "2024-05-29",
+        },
+        {
+          id: "#ORD4514",
+          service: "Cloud Setup",
+          customer: "maria****@startup.com",
+          amount: 69,
+          status: "completed",
+          date: "2024-05-29",
+        },
+      ];
+
+      // Animate number counting
+      function animateValue(element, start, end, duration) {
+        if (!element) return;
+        const range = end - start;
+        const increment = range / (duration / 10);
+        let current = start;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= end) {
+            clearInterval(timer);
+            current = end;
+          }
+          if (typeof current === "number") {
+            if (element.id === "totalRevenue") {
+              element.textContent = "$" + Math.round(current).toLocaleString();
+            } else if (element.id === "conversionRate") {
+              element.textContent = Math.round(current) + "%";
+            } else {
+              element.textContent = Math.round(current);
+            }
+          }
+        }, 10);
+      }
+
+      // Initialize charts
+      const revenueCtx = document
+        .getElementById("revenueChart")
+        .getContext("2d");
+      new Chart(revenueCtx, {
+        type: "line",
+        data: {
+          labels: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          datasets: [
+            {
+              label: "Revenue ($)",
+              data: monthlyRevenue,
+              borderColor: "#ffd89b",
+              backgroundColor: "rgba(255, 216, 155, 0.1)",
+              tension: 0.4,
+              fill: true,
+              pointBackgroundColor: "#667eea",
+              pointBorderColor: "#fff",
+              pointRadius: 4,
+              pointHoverRadius: 6,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { labels: { color: "white", font: { size: 12 } } },
+            tooltip: {
+              backgroundColor: "rgba(0,0,0,0.8)",
+              titleColor: "#ffd89b",
+            },
+          },
+          scales: {
+            y: {
+              ticks: { color: "white" },
+              grid: { color: "rgba(255,255,255,0.1)" },
+            },
+            x: {
+              ticks: { color: "white" },
+              grid: { color: "rgba(255,255,255,0.1)" },
+            },
+          },
+        },
+      });
+
+      const servicesCtx = document
+        .getElementById("servicesChart")
+        .getContext("2d");
+      new Chart(servicesCtx, {
+        type: "bar",
+        data: {
+          labels: serviceNames,
+          datasets: [
+            {
+              label: "Number of Orders",
+              data: servicePopularity,
+              backgroundColor: "rgba(102, 126, 234, 0.7)",
+              borderColor: "#667eea",
+              borderWidth: 2,
+              borderRadius: 8,
+              barPercentage: 0.7,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { labels: { color: "white", font: { size: 12 } } },
+            tooltip: { backgroundColor: "rgba(0,0,0,0.8)" },
+          },
+          scales: {
+            y: {
+              ticks: { color: "white" },
+              grid: { color: "rgba(255,255,255,0.1)" },
+            },
+            x: {
+              ticks: { color: "white", font: { size: 10 } },
+              grid: { display: false },
+            },
+          },
+        },
+      });
+
+      // Load dashboard data
+      function loadDashboard() {
+        // Animate stats
+        animateValue(
+          document.getElementById("totalRevenue"),
+          0,
+          totalRevenue,
+          2000,
+        );
+        animateValue(document.getElementById("totalOrders"), 0, 845, 1500);
+        animateValue(document.getElementById("activeUsers"), 0, 1247, 1500);
+        animateValue(document.getElementById("conversionRate"), 0, 23.5, 1500);
+
+        document.getElementById("avgRating").textContent = "4.9";
+        document.getElementById("avgResponse").textContent = "4.8";
+
+        // Load recent orders
+        const ordersBody = document.getElementById("ordersBody");
+        ordersBody.innerHTML = recentOrders
+          .map(
+            (order) => `
+                <tr>
+                    <td><strong>${order.id}</strong></td>
+                    <td>${order.service}</td>
+                    <td>${order.customer}</td>
+                    <td>$${order.amount}</td>
+                    <td><span class="status ${order.status}">${order.status}</span></td>
+                    <td>${order.date}</td>
+                </tr>
+            `,
+          )
+          .join("");
+      }
+
+      // Update last updated time
+      function updateLastUpdated() {
+        const now = new Date();
+        document.getElementById("lastUpdated").textContent =
+          now.toLocaleTimeString();
+      }
+
+      // Simulate real-time updates every 30 seconds
+      setInterval(() => {
+        updateLastUpdated();
+        // Simulate new order (optional)
+        const newRevenue = parseInt(
+          document
+            .getElementById("totalRevenue")
+            .textContent.replace("$", "")
+            .replace(",", ""),
+        );
+        if (newRevenue) {
+          // Just update timestamp, keep numbers static for demo
+        }
+      }, 30000);
+
+      // Initialize
+      loadDashboard();
+      updateLastUpdated();
+
+      // Update timestamp on page visibility
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) {
+          updateLastUpdated();
+        }
+      });
+    </script>
+  </body>
+</html>

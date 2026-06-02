@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Learn about IT Pro Solutions - founded in 2020, we've helped over 10,000+ clients with remote IT support. Meet our team and see our journey."
+    />
+    <meta
+      name="keywords"
+      content="about IT company, IT support company, remote tech support, IT Pro Solutions, company history, IT team"
+    />
+    <meta name="author" content="IT Pro Solutions" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="About Us - IT Pro Solutions" />
+    <meta
+      property="og:description"
+      content="Learn about our journey, team, and mission to provide professional remote IT support."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/images/branding/logo.png" />
+    <meta property="og:site_name" content="IT Pro Solutions" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="About Us - IT Pro Solutions" />
+    <meta
+      name="twitter:description"
+      content="Professional remote IT support since 2020. Over 10,000+ happy clients."
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="assets/images/branding/favicon.ico"
+    />
+    <link rel="apple-touch-icon" href="assets/images/branding/logo.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>About Us - IT Pro Solutions | Remote IT Support Company</title>
+
+    <style>
+      .company-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .about-section {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+      .team-member {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+      .team-member:hover {
+        transform: translateY(-5px);
+      }
+      .member-photo {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        overflow: hidden;
+        border: 3px solid #667eea;
+      }
+      .member-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .timeline {
+        position: relative;
+        padding: 2rem 0;
+      }
+      .timeline-item {
+        padding: 1rem;
+        margin: 1rem 0;
+        background: rgba(255, 255, 255, 0.05);
+        border-left: 3px solid #667eea;
+      }
+      .milestone-year {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ffd89b;
+      }
+      .stats-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+      .company-stat {
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+      }
+      .company-stat i {
+        font-size: 2rem;
+        color: #ffd89b;
+      }
+      .company-stat h3 {
+        font-size: 2rem;
+        margin: 0.5rem 0;
+      }
+      .image-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+      .gallery-item {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s;
+      }
+      .gallery-item:hover {
+        transform: scale(1.02);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .gallery-item p {
+        padding: 0.5rem;
+        text-align: center;
+      }
+      @media (max-width: 768px) {
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+        .member-photo {
+          width: 150px;
+          height: 150px;
+        }
+        .company-container {
+          padding: 1rem;
+        }
+        .stats-container {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .stats-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <h2>IT<span class="highlight">Pro</span></h2>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">HOME</a>
+          <a href="services.html">SERVICES</a>
+          <a href="company.html" class="active">COMPANY</a>
+          <a href="dashboard.html">DASHBOARD</a>
+          <a href="news.html">NEWS</a>
+          <a href="pages/login.html">LOGIN</a>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Search..." />
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </nav>
+
+    <div class="company-container">
+      <div class="about-section">
+        <h1>About IT Pro Solutions</h1>
+        <p>
+          Founded in 2020, IT Pro Solutions has been at the forefront of remote
+          IT support and technology solutions. We specialize in providing
+          instant, reliable, and affordable IT services through AnyDesk and
+          other remote tools.
+        </p>
+        <br />
+        <p>
+          Our mission is to make professional IT support accessible to everyone,
+          anywhere in the world. With a team of certified professionals, we've
+          helped over 10,000+ clients resolve their technical issues with a 98%
+          satisfaction rate.
+        </p>
+      </div>
+
+      <!-- Photo Gallery Section -->
+      <div class="about-section">
+        <h2>Our Workspace & Team</h2>
+        <div class="image-gallery">
+          <div class="gallery-item">
+            <img
+              src="assets/images/personal/profile.jpg"
+              alt="Founder Profile"
+              onerror="
+                this.src =
+                  'https://via.placeholder.com/300x200?text=Profile+Photo'
+              "
+            />
+            <p>Founder & Lead Technician</p>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="assets/images/personal/workspace.jpg"
+              alt="Work Environment"
+              onerror="
+                this.src = 'https://via.placeholder.com/300x200?text=Workspace'
+              "
+            />
+            <p>Professional Workspace</p>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="assets/images/personal/certificate.jpg"
+              alt="Certifications"
+              onerror="
+                this.src =
+                  'https://via.placeholder.com/300x200?text=Certifications'
+              "
+            />
+            <p>IT Certifications</p>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="assets/images/personal/team.jpg"
+              alt="Team Photo"
+              onerror="
+                this.src = 'https://via.placeholder.com/300x200?text=Team'
+              "
+            />
+            <p>Our Dedicated Team</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-container">
+        <div class="company-stat">
+          <i class="fas fa-calendar-alt"></i>
+          <h3>5+</h3>
+          <p>Years of Experience</p>
+        </div>
+        <div class="company-stat">
+          <i class="fas fa-smile"></i>
+          <h3>10,000+</h3>
+          <p>Happy Clients</p>
+        </div>
+        <div class="company-stat">
+          <i class="fas fa-tools"></i>
+          <h3>50,000+</h3>
+          <p>Issues Resolved</p>
+        </div>
+        <div class="company-stat">
+          <i class="fas fa-star"></i>
+          <h3>4.9</h3>
+          <p>Customer Rating</p>
+        </div>
+        <div class="company-stat">
+          <i class="fas fa-globe"></i>
+          <h3>25+</h3>
+          <p>Countries Served</p>
+        </div>
+        <div class="company-stat">
+          <i class="fas fa-clock"></i>
+          <h3>24/7</h3>
+          <p>Support Available</p>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>Our Journey</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="milestone-year">2020</div>
+            <h3>Company Founded</h3>
+            <p>
+              Started with a small team of 3 IT professionals with a vision to
+              provide accessible remote IT support.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="milestone-year">2021</div>
+            <h3>First 1000 Clients</h3>
+            <p>
+              Reached milestone of 1000 satisfied customers and expanded our
+              service offerings.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="milestone-year">2022</div>
+            <h3>Expanded Services</h3>
+            <p>
+              Added 20+ new IT services to our portfolio including cloud setup
+              and security audits.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="milestone-year">2023</div>
+            <h3>24/7 Support Launch</h3>
+            <p>
+              Introduced round-the-clock customer support with faster response
+              times.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="milestone-year">2024</div>
+            <h3>AI Integration</h3>
+            <p>
+              Implemented AI-powered diagnostic tools for faster issue
+              resolution.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="milestone-year">2025</div>
+            <h3>Global Expansion</h3>
+            <p>Expanded services to 25+ countries with multilingual support.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>Meet Our Leadership</h2>
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="member-photo">
+              <img
+                src="assets/images/personal/profile.jpg"
+                alt="Founder"
+                onerror="
+                  this.src = 'https://via.placeholder.com/180x180?text=CEO'
+                "
+              />
+            </div>
+            <h3>John Smith</h3>
+            <p>CEO & Founder</p>
+            <p>20+ years in IT industry</p>
+            <p><i class="fas fa-certificate"></i> Microsoft Certified</p>
+          </div>
+          <div class="team-member">
+            <div class="member-photo">
+              <img
+                src="assets/images/personal/workspace.jpg"
+                alt="CTO"
+                onerror="
+                  this.src = 'https://via.placeholder.com/180x180?text=CTO'
+                "
+              />
+            </div>
+            <h3>Sarah Johnson</h3>
+            <p>CTO</p>
+            <p>Cloud Computing Expert</p>
+            <p><i class="fas fa-certificate"></i> AWS Certified</p>
+          </div>
+          <div class="team-member">
+            <div class="member-photo">
+              <img
+                src="assets/images/personal/certificate.jpg"
+                alt="Support Lead"
+                onerror="
+                  this.src = 'https://via.placeholder.com/180x180?text=Support'
+                "
+              />
+            </div>
+            <h3>Mike Chen</h3>
+            <p>Head of Support</p>
+            <p>Customer Service Specialist</p>
+            <p><i class="fas fa-certificate"></i> ITIL Certified</p>
+          </div>
+          <div class="team-member">
+            <div class="member-photo">
+              <img
+                src="assets/images/personal/team.jpg"
+                alt="Security Lead"
+                onerror="
+                  this.src = 'https://via.placeholder.com/180x180?text=Security'
+                "
+              />
+            </div>
+            <h3>Lisa Rodriguez</h3>
+            <p>Security Lead</p>
+            <p>Cybersecurity Expert</p>
+            <p><i class="fas fa-certificate"></i> CISSP Certified</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>Why Choose Us?</h2>
+        <div class="team-grid">
+          <div class="team-member">
+            <i class="fas fa-clock fa-2x" style="color: #ffd89b"></i>
+            <h3>24/7 Availability</h3>
+            <p>Support anytime, anywhere in the world</p>
+          </div>
+          <div class="team-member">
+            <i class="fas fa-shield-alt fa-2x" style="color: #ffd89b"></i>
+            <h3>Secure Connections</h3>
+            <p>Enterprise-grade encryption for all sessions</p>
+          </div>
+          <div class="team-member">
+            <i class="fas fa-dollar-sign fa-2x" style="color: #ffd89b"></i>
+            <h3>Best Prices</h3>
+            <p>Affordable solutions with no hidden fees</p>
+          </div>
+          <div class="team-member">
+            <i class="fas fa-certificate fa-2x" style="color: #ffd89b"></i>
+            <h3>Certified Experts</h3>
+            <p>Professional certification guaranteed</p>
+          </div>
+          <div class="team-member">
+            <i class="fas fa-tachometer-alt fa-2x" style="color: #ffd89b"></i>
+            <h3>Fast Response</h3>
+            <p>Average response time under 5 minutes</p>
+          </div>
+          <div class="team-member">
+            <i class="fas fa-money-bill-wave fa-2x" style="color: #ffd89b"></i>
+            <h3>Satisfaction Guarantee</h3>
+            <p>100% money-back if not satisfied</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>Our Certifications & Partners</h2>
+        <div class="team-grid">
+          <div class="team-member">
+            <i class="fab fa-microsoft fa-2x" style="color: #ffd89b"></i>
+            <h3>Microsoft Partner</h3>
+            <p>Certified Microsoft Solutions Partner</p>
+          </div>
+          <div class="team-member">
+            <i class="fab fa-aws fa-2x" style="color: #ffd89b"></i>
+            <h3>AWS Partner</h3>
+            <p>Authorized AWS Cloud Partner</p>
+          </div>
+          <div class="team-member">
+            <i class="fas fa-shield-alt fa-2x" style="color: #ffd89b"></i>
+            <h3>CompTIA Certified</h3>
+            <p>Industry-standard certifications</p>
+          </div>
+          <div class="team-member">
+            <i class="fas fa-desktop fa-2x" style="color: #ffd89b"></i>
+            <h3>AnyDesk Partner</h3>
+            <p>Authorized Remote Support Provider</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About IT Pro Solutions",
+        "description": "Professional remote IT support company founded in 2020",
+        "foundingDate": "2020",
+        "numberOfEmployees": "25",
+        "areaServed": "Worldwide"
+      }
+    </script>
+  </body>
+</html>

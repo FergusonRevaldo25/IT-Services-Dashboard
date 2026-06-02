@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Latest IT news, technology updates, and company announcements from IT Pro Solutions. Stay informed about new services, security updates, and industry trends."
+    />
+    <meta
+      name="keywords"
+      content="IT news, technology updates, tech news, cybersecurity news, IT announcements, remote support news"
+    />
+    <meta name="author" content="IT Pro Solutions" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="IT News & Updates - IT Pro Solutions" />
+    <meta
+      property="og:description"
+      content="Latest technology news, security updates, and company announcements"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/images/branding/logo.png" />
+    <meta property="og:site_name" content="IT Pro Solutions" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="IT News & Updates - IT Pro Solutions" />
+    <meta
+      name="twitter:description"
+      content="Stay updated with the latest in IT technology"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="assets/images/branding/favicon.ico"
+    />
+    <link rel="apple-touch-icon" href="assets/images/branding/logo.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>IT News & Updates - Latest Technology News | IT Pro Solutions</title>
+
+    <style>
+      .news-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .news-header {
+        text-align: center;
+        padding: 3rem 2rem;
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.3),
+          rgba(118, 75, 162, 0.3)
+        );
+        border-radius: 20px;
+        margin-bottom: 2rem;
+      }
+      .news-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .news-header p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      /* Breaking News Ticker */
+      .ticker-container {
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50px;
+        padding: 0.75rem 1.5rem;
+        margin-bottom: 2rem;
+        overflow: hidden;
+        position: relative;
+      }
+      .ticker-label {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #ff4444;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        z-index: 2;
+      }
+      .ticker {
+        overflow: hidden;
+        white-space: nowrap;
+        margin-left: 80px;
+      }
+      .ticker-content {
+        display: inline-block;
+        animation: ticker 25s linear infinite;
+      }
+      .ticker-content span {
+        margin-right: 2rem;
+      }
+      .ticker-content i {
+        color: #ffd89b;
+        margin-right: 0.5rem;
+      }
+      @keyframes ticker {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* News Grid */
+      .news-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+      .news-card {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .news-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(102, 126, 234, 0.5);
+      }
+      .news-image {
+        height: 200px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .news-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+      .news-card:hover .news-image img {
+        transform: scale(1.05);
+      }
+      .news-category {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: bold;
+      }
+      .news-content {
+        padding: 1.5rem;
+      }
+      .news-date {
+        color: #ffd89b;
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .news-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+      }
+      .news-excerpt {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+      }
+      .read-more {
+        color: #ffd89b;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: gap 0.3s;
+      }
+      .read-more:hover {
+        gap: 0.75rem;
+      }
+
+      /* Sidebar */
+      .news-sidebar {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      @media (max-width: 900px) {
+        .news-sidebar {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Newsletter Section */
+      .newsletter {
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.2),
+          rgba(118, 75, 162, 0.2)
+        );
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .newsletter h3 {
+        margin-bottom: 0.5rem;
+      }
+      .newsletter p {
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.8;
+      }
+      .newsletter-form {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .newsletter-form input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50px;
+        color: white;
+        font-size: 0.9rem;
+        min-width: 180px;
+      }
+      .newsletter-form button {
+        padding: 0.75rem 1.5rem;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border: none;
+        border-radius: 50px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+      .newsletter-form button:hover {
+        transform: translateY(-2px);
+      }
+
+      /* Popular Posts */
+      .popular-posts {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 1.5rem;
+      }
+      .popular-posts h3 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+      .popular-item {
+        display: flex;
+        gap: 1rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .popular-item:hover {
+        transform: translateX(5px);
+      }
+      .popular-number {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #667eea;
+        min-width: 35px;
+      }
+      .popular-title {
+        font-size: 0.85rem;
+        line-height: 1.3;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .news-container {
+          padding: 1rem;
+        }
+        .news-header h1 {
+          font-size: 1.8rem;
+        }
+        .news-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        .ticker {
+          margin-left: 70px;
+        }
+        .ticker-label {
+          font-size: 0.65rem;
+          padding: 0.2rem 0.6rem;
+        }
+        .newsletter-form {
+          flex-direction: column;
+        }
+        .newsletter-form input,
+        .newsletter-form button {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .ticker-content {
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <h2>IT<span class="highlight">Pro</span></h2>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">HOME</a>
+          <a href="services.html">SERVICES</a>
+          <a href="company.html">COMPANY</a>
+          <a href="dashboard.html">DASHBOARD</a>
+          <a href="news.html" class="active">NEWS</a>
+          <a href="pages/login.html">LOGIN</a>
+        </div>
+        <div class="search-bar">
+          <input type="text" id="searchNews" placeholder="Search news..." />
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </nav>
+
+    <div class="news-container">
+      <div class="news-header">
+        <h1><i class="fas fa-newspaper"></i> IT News & Updates</h1>
+        <p>
+          Stay informed with the latest technology trends, security updates, and
+          company announcements
+        </p>
+      </div>
+
+      <!-- Breaking News Ticker -->
+      <div class="ticker-container">
+        <span class="ticker-label"
+          ><i class="fas fa-bullhorn"></i> BREAKING</span
+        >
+        <div class="ticker">
+          <div class="ticker-content">
+            <span
+              ><i class="fas fa-rocket"></i> NEW: AI-Powered Diagnostic Tool
+              Launched!
+            </span>
+            <span
+              ><i class="fas fa-tag"></i> SPECIAL: 20% off on all services this
+              week!
+            </span>
+            <span
+              ><i class="fas fa-headset"></i> 24/7 Premium Support Now
+              Available!
+            </span>
+            <span
+              ><i class="fas fa-shield-alt"></i> New Security Update:
+              Military-grade encryption
+            </span>
+            <span
+              ><i class="fas fa-mobile-alt"></i> Mobile App Coming Soon!
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-sidebar">
+        <!-- Main News Grid -->
+        <div>
+          <div class="news-grid" id="newsGrid"></div>
+
+          <!-- Load More Button -->
+          <div style="text-align: center; margin-top: 2rem">
+            <button
+              class="btn-secondary"
+              id="loadMoreBtn"
+              onclick="loadMoreNews()"
+              style="display: none"
+            >
+              <i class="fas fa-sync-alt"></i> Load More News
+            </button>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+          <!-- Newsletter Subscription -->
+          <div class="newsletter">
+            <i
+              class="fas fa-envelope fa-2x"
+              style="color: #ffd89b; margin-bottom: 0.5rem"
+            ></i>
+            <h3>Subscribe to Newsletter</h3>
+            <p>
+              Get the latest IT news and exclusive offers directly in your inbox
+            </p>
+            <form
+              class="newsletter-form"
+              id="newsletterForm"
+              onsubmit="subscribeNewsletter(event)"
+            >
+              <input
+                type="email"
+                id="newsletterEmail"
+                placeholder="Enter your email address"
+                required
+              />
+              <button type="submit">
+                Subscribe <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+            <div
+              id="subscribeMessage"
+              style="margin-top: 0.75rem; font-size: 0.8rem"
+            ></div>
+          </div>
+
+          <!-- Popular Posts -->
+          <div class="popular-posts" style="margin-top: 1.5rem">
+            <h3>
+              <i class="fas fa-fire" style="color: #ffd89b"></i> Popular This
+              Week
+            </h3>
+            <div id="popularPosts"></div>
+          </div>
+
+          <!-- Categories -->
+          <div class="popular-posts" style="margin-top: 1.5rem">
+            <h3><i class="fas fa-tags"></i> Categories</h3>
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-top: 1rem;
+              "
+            >
+              <span
+                class="filter-cat"
+                data-cat="all"
+                style="
+                  padding: 0.25rem 0.75rem;
+                  background: rgba(102, 126, 234, 0.3);
+                  border-radius: 20px;
+                  cursor: pointer;
+                  font-size: 0.8rem;
+                "
+                >All</span
+              >
+              <span
+                class="filter-cat"
+                data-cat="Technology"
+                style="
+                  padding: 0.25rem 0.75rem;
+                  background: rgba(102, 126, 234, 0.2);
+                  border-radius: 20px;
+                  cursor: pointer;
+                  font-size: 0.8rem;
+                "
+                >Technology</span
+              >
+              <span
+                class="filter-cat"
+                data-cat="Security"
+                style="
+                  padding: 0.25rem 0.75rem;
+                  background: rgba(102, 126, 234, 0.2);
+                  border-radius: 20px;
+                  cursor: pointer;
+                  font-size: 0.8rem;
+                "
+                >Security</span
+              >
+              <span
+                class="filter-cat"
+                data-cat="Company"
+                style="
+                  padding: 0.25rem 0.75rem;
+                  background: rgba(102, 126, 234, 0.2);
+                  border-radius: 20px;
+                  cursor: pointer;
+                  font-size: 0.8rem;
+                "
+                >Company</span
+              >
+              <span
+                class="filter-cat"
+                data-cat="Promotion"
+                style="
+                  padding: 0.25rem 0.75rem;
+                  background: rgba(102, 126, 234, 0.2);
+                  border-radius: 20px;
+                  cursor: pointer;
+                  font-size: 0.8rem;
+                "
+                >Promotion</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // News Articles Database
+      const newsArticles = [
+        {
+          id: 1,
+          title: "AI-Powered Diagnostic Tool Launch",
+          date: "June 2, 2024",
+          excerpt:
+            "We're excited to announce our new AI-powered diagnostic tool that can identify and resolve issues 50% faster than traditional methods. This cutting-edge technology uses machine learning to predict potential problems before they occur.",
+          category: "Technology",
+          icon: "fa-robot",
+          image: "assets/images/services/anydesk-support.jpg",
+          readTime: "3 min read",
+          popular: 245,
+        },
+        {
+          id: 2,
+          title: "24/7 Premium Support Now Available",
+          date: "May 30, 2024",
+          excerpt:
+            "IT Pro Solutions now offers round-the-clock customer support for all our premium services. Our expert team is ready to assist you anytime, anywhere with guaranteed 15-minute response times.",
+          category: "Company",
+          icon: "fa-headset",
+          image: "assets/images/services/security.jpg",
+          readTime: "2 min read",
+          popular: 189,
+        },
+        {
+          id: 3,
+          title: "Security Update: New Encryption Standards",
+          date: "May 28, 2024",
+          excerpt:
+            "We've implemented military-grade AES-256 encryption to ensure your data remains secure during remote sessions. This update makes us one of the most secure remote support providers in the industry.",
+          category: "Security",
+          icon: "fa-shield-alt",
+          image: "assets/images/services/security.jpg",
+          readTime: "4 min read",
+          popular: 167,
+        },
+        {
+          id: 4,
+          title: "Summer Discount Campaign",
+          date: "May 25, 2024",
+          excerpt:
+            "Get 20% off on all IT services during our summer promotion. Limited time offer! Use code SUMMER20 at checkout. Offer valid until August 31st.",
+          category: "Promotion",
+          icon: "fa-tag",
+          image: "assets/images/services/cloud-setup.jpg",
+          readTime: "1 min read",
+          popular: 312,
+        },
+        {
+          id: 5,
+          title: "New Partnership with Microsoft",
+          date: "May 22, 2024",
+          excerpt:
+            "IT Pro Solutions is now an official Microsoft Certified Partner. This partnership brings exclusive benefits and advanced support options for Windows and Office users.",
+          category: "Company",
+          icon: "fa-handshake",
+          image: "assets/images/services/software-install.jpg",
+          readTime: "3 min read",
+          popular: 156,
+        },
+        {
+          id: 6,
+          title: "Mobile App Coming Soon",
+          date: "May 20, 2024",
+          excerpt:
+            "Our new mobile app will allow you to request support, track services, and manage your account on the go. Launching next month on iOS and Android.",
+          category: "Technology",
+          icon: "fa-mobile-alt",
+          image: "assets/images/services/network-setup.jpg",
+          readTime: "2 min read",
+          popular: 203,
+        },
+        {
+          id: 7,
+          title: "Ransomware Protection Guide 2024",
+          date: "May 18, 2024",
+          excerpt:
+            "Learn how to protect your business from ransomware attacks with our comprehensive guide. Includes best practices, prevention tips, and recovery strategies.",
+          category: "Security",
+          icon: "fa-shield-virus",
+          image: "assets/images/services/virus-removal.jpg",
+          readTime: "6 min read",
+          popular: 278,
+        },
+        {
+          id: 8,
+          title: "New Office Opening in Singapore",
+          date: "May 15, 2024",
+          excerpt:
+            "We're expanding to Asia! Our new Singapore office will serve customers across the APAC region with localized support and faster response times.",
+          category: "Company",
+          icon: "fa-globe",
+          image: "assets/images/personal/workspace.jpg",
+          readTime: "2 min read",
+          popular: 98,
+        },
+        {
+          id: 9,
+          title: "Windows 11 Update Guide",
+          date: "May 12, 2024",
+          excerpt:
+            "Everything you need to know about the latest Windows 11 update. Performance improvements, new features, and security enhancements explained.",
+          category: "Technology",
+          icon: "fa-windows",
+          image: "assets/images/services/windows-install.jpg",
+          readTime: "4 min read",
+          popular: 145,
+        },
+      ];
+
+      let currentCategory = "all";
+      let currentSearch = "";
+      let visibleCount = 6;
+
+      function displayNews() {
+        const grid = document.getElementById("newsGrid");
+        let filtered = newsArticles;
+
+        if (currentCategory !== "all") {
+          filtered = filtered.filter((a) => a.category === currentCategory);
+        }
+
+        if (currentSearch) {
+          filtered = filtered.filter(
+            (a) =>
+              a.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
+              a.excerpt.toLowerCase().includes(currentSearch.toLowerCase()) ||
+              a.category.toLowerCase().includes(currentSearch.toLowerCase()),
+          );
+        }
+
+        // Sort by date (newest first)
+        filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        const visibleArticles = filtered.slice(0, visibleCount);
+        const hasMore = filtered.length > visibleCount;
+
+        document.getElementById("loadMoreBtn").style.display = hasMore
+          ? "block"
+          : "none";
+
+        if (visibleArticles.length === 0) {
+          grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+                        <i class="fas fa-search fa-3x" style="opacity: 0.5;"></i>
+                        <h3>No news found</h3>
+                        <p>Try adjusting your search or filter</p>
+                    </div>
+                `;
+          return;
+        }
+
+        grid.innerHTML = visibleArticles
+          .map(
+            (article) => `
+                <div class="news-card" onclick="openNews(${article.id})">
+                    <div class="news-image">
+                        <img src="${article.image}" alt="${article.title}" onerror="this.src='https://via.placeholder.com/400x200?text=News+Image'">
+                        <span class="news-category">${article.category}</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">
+                            <i class="far fa-calendar-alt"></i> ${article.date}
+                            <span style="margin-left: auto;"><i class="far fa-clock"></i> ${article.readTime}</span>
+                        </div>
+                        <h3 class="news-title">${article.title}</h3>
+                        <p class="news-excerpt">${article.excerpt.substring(0, 120)}${article.excerpt.length > 120 ? "..." : ""}</p>
+                        <a href="#" class="read-more" onclick="event.stopPropagation(); openNews(${article.id})">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            `,
+          )
+          .join("");
+      }
+
+      function loadMoreNews() {
+        visibleCount += 3;
+        displayNews();
+      }
+
+      function openNews(id) {
+        const article = newsArticles.find((a) => a.id === id);
+        if (article) {
+          alert(
+            `📰 ${article.title}\n\n${article.excerpt}\n\nFull article coming soon!`,
+          );
+        }
+      }
+
+      function displayPopularPosts() {
+        const popular = [...newsArticles]
+          .sort((a, b) => b.popular - a.popular)
+          .slice(0, 5);
+        const container = document.getElementById("popularPosts");
+        container.innerHTML = popular
+          .map(
+            (post, index) => `
+                <div class="popular-item" onclick="openNews(${post.id})">
+                    <div class="popular-number">${index + 1}</div>
+                    <div class="popular-title">${post.title}</div>
+                </div>
+            `,
+          )
+          .join("");
+      }
+
+      function subscribeNewsletter(event) {
+        event.preventDefault();
+        const email = document.getElementById("newsletterEmail").value;
+        const messageDiv = document.getElementById("subscribeMessage");
+
+        if (!email || !email.includes("@")) {
+          messageDiv.innerHTML =
+            '<span style="color: #ff8888;"><i class="fas fa-exclamation-circle"></i> Please enter a valid email</span>';
+          return;
+        }
+
+        messageDiv.innerHTML =
+          '<span style="color: #4CAF50;"><i class="fas fa-check-circle"></i> Subscribed successfully!</span>';
+        document.getElementById("newsletterEmail").value = "";
+
+        setTimeout(() => {
+          messageDiv.innerHTML = "";
+        }, 3000);
+      }
+
+      // Category filter
+      document.querySelectorAll(".filter-cat").forEach((cat) => {
+        cat.addEventListener("click", function () {
+          document.querySelectorAll(".filter-cat").forEach((c) => {
+            c.style.background = "rgba(102,126,234,0.2)";
+          });
+          this.style.background = "rgba(102,126,234,0.5)";
+          currentCategory = this.dataset.cat;
+          visibleCount = 6;
+          displayNews();
+        });
+      });
+
+      // Search functionality
+      document.getElementById("searchNews").addEventListener("input", (e) => {
+        currentSearch = e.target.value;
+        visibleCount = 6;
+        displayNews();
+      });
+
+      // Initialize
+      displayNews();
+      displayPopularPosts();
+    </script>
+  </body>
+</html>
