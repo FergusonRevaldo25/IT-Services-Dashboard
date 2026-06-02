@@ -1,58 +1,32 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- SEO Meta Tags -->
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Login to your IT Pro Solutions account to access IT services, track orders, and manage subscriptions."
-    />
-    <meta
-      name="keywords"
-      content="login, IT support login, customer portal, account access"
-    />
+    <meta name="description" content="Login to your IT Pro Solutions account" />
+    <meta name="keywords" content="login, IT support login" />
     <meta name="author" content="IT Pro Solutions" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <meta name="robots" content="noindex, nofollow" />
-
-    <!-- Open Graph -->
     <meta property="og:title" content="Login - IT Pro Solutions" />
-    <meta
-      property="og:description"
-      content="Access your IT Pro Solutions account"
-    />
-    <meta property="og:type" content="website" />
-
-    <!-- Favicon -->
     <link
       rel="icon"
       type="image/x-icon"
       href="../assets/images/branding/favicon.ico"
     />
     <link rel="apple-touch-icon" href="../assets/images/branding/logo.png" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-
-    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="../css/style.css" />
-
-    <title>Login - IT Pro Solutions | Access Your Account</title>
-
+    <title>Login - IT Pro Solutions</title>
     <style>
       .login-container {
         min-height: 80vh;
@@ -68,7 +42,6 @@
         border-radius: 20px;
         width: 100%;
         max-width: 450px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.2);
       }
       .login-box h2 {
@@ -88,7 +61,6 @@
         display: block;
         margin-bottom: 0.5rem;
         font-size: 0.85rem;
-        font-weight: 500;
       }
       .input-group input {
         width: 100%;
@@ -98,18 +70,11 @@
         color: white;
         border-radius: 12px;
         font-size: 1rem;
-        transition: all 0.3s;
       }
       .input-group input:focus {
         outline: none;
         border-color: #667eea;
-        background: rgba(255, 255, 255, 0.15);
       }
-      .input-group input::placeholder {
-        color: rgba(255, 255, 255, 0.5);
-      }
-
-      /* CAPTCHA Styles */
       .captcha-container {
         background: rgba(0, 0, 0, 0.3);
         border-radius: 12px;
@@ -145,21 +110,10 @@
         padding: 0.5rem 1rem;
         border-radius: 8px;
         cursor: pointer;
-        transition: all 0.3s;
-        font-size: 0.85rem;
       }
       .refresh-captcha:hover {
         background: #667eea;
       }
-      .captcha-input {
-        margin-top: 0.75rem;
-      }
-      .captcha-input input {
-        text-align: center;
-        letter-spacing: 2px;
-      }
-
-      /* Remember me & Forgot password */
       .login-options {
         display: flex;
         justify-content: space-between;
@@ -173,18 +127,10 @@
         gap: 0.5rem;
         cursor: pointer;
       }
-      .checkbox-label input {
-        width: auto;
-      }
       .forgot-link {
         color: #ffd89b;
         text-decoration: none;
       }
-      .forgot-link:hover {
-        text-decoration: underline;
-      }
-
-      /* Login Button */
       .login-btn {
         width: 100%;
         padding: 1rem;
@@ -196,32 +142,22 @@
         font-weight: bold;
         cursor: pointer;
         transition: all 0.3s;
-        margin-top: 0.5rem;
       }
       .login-btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
       }
-      .login-btn:active {
-        transform: translateY(0);
-      }
-
-      /* Social Login */
       .social-login {
         text-align: center;
         margin-top: 1.5rem;
         padding-top: 1.5rem;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
       }
-      .social-login p {
-        font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.6);
-        margin-bottom: 1rem;
-      }
       .social-icons {
         display: flex;
         justify-content: center;
         gap: 1rem;
+        margin-top: 1rem;
       }
       .social-icon {
         width: 45px;
@@ -231,16 +167,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s;
         cursor: pointer;
-        font-size: 1.2rem;
+        transition: all 0.3s;
       }
       .social-icon:hover {
         background: rgba(102, 126, 234, 0.6);
         transform: translateY(-2px);
       }
-
-      /* Signup Link */
       .signup-link {
         text-align: center;
         margin-top: 1.5rem;
@@ -251,11 +184,6 @@
         text-decoration: none;
         font-weight: bold;
       }
-      .signup-link a:hover {
-        text-decoration: underline;
-      }
-
-      /* Error Message */
       .error-message {
         background: rgba(244, 67, 54, 0.2);
         border: 1px solid #f44336;
@@ -266,8 +194,6 @@
         color: #ff8888;
         display: none;
       }
-
-      /* Success Message */
       .success-message {
         background: rgba(76, 175, 80, 0.2);
         border: 1px solid #4caf50;
@@ -278,24 +204,6 @@
         color: #8bc34a;
         display: none;
       }
-
-      /* Responsive */
-      @media (max-width: 480px) {
-        .login-box {
-          padding: 1.5rem;
-        }
-        .captcha-code {
-          font-size: 1.2rem;
-          letter-spacing: 4px;
-        }
-        .login-options {
-          flex-direction: column;
-          gap: 0.5rem;
-          align-items: flex-start;
-        }
-      }
-
-      /* Demo Credentials Hint */
       .demo-hint {
         background: rgba(255, 216, 155, 0.15);
         border-left: 3px solid #ffd89b;
@@ -304,9 +212,17 @@
         border-radius: 8px;
         font-size: 0.75rem;
       }
-      .demo-hint i {
-        color: #ffd89b;
-        margin-right: 0.5rem;
+      .logout-link {
+        color: #ff6b6b !important;
+      }
+      @media (max-width: 480px) {
+        .login-box {
+          padding: 1.5rem;
+        }
+        .captcha-code {
+          font-size: 1.2rem;
+          letter-spacing: 4px;
+        }
       }
     </style>
   </head>
@@ -322,11 +238,23 @@
           <a href="../company.html">COMPANY</a>
           <a href="../dashboard.html">DASHBOARD</a>
           <a href="../news.html">NEWS</a>
-          <a href="login.html" class="active">LOGIN</a>
+          <a href="login.html" class="active" id="loginLink">LOGIN</a>
+          <a
+            href="#"
+            onclick="
+              logout();
+              return false;
+            "
+            id="logoutLink"
+            style="display: none"
+            class="logout-link"
+            ><i class="fas fa-sign-out-alt"></i> LOGOUT</a
+          >
         </div>
         <div class="search-bar">
-          <input type="text" placeholder="Search..." />
-          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search..." /><i
+            class="fas fa-search"
+          ></i>
         </div>
       </div>
     </nav>
@@ -337,19 +265,18 @@
         <div class="login-subtitle">
           Login to access your IT Pro Solutions account
         </div>
-
         <div class="demo-hint">
-          <i class="fas fa-info-circle"></i> Demo Credentials:
-          <strong>demo@itpro.com</strong> / <strong>demo123</strong>
+          <i class="fas fa-info-circle"></i>
+          <strong>Demo User:</strong> demo@itpro.com / demo123
+          &nbsp;&nbsp;|&nbsp;&nbsp;<strong>Admin:</strong> admin@itpro.com /
+          admin123
         </div>
-
         <div id="errorMessage" class="error-message"></div>
         <div id="successMessage" class="success-message"></div>
-
         <form id="loginForm">
           <div class="input-group">
-            <label><i class="fas fa-envelope"></i> Email Address</label>
-            <input
+            <label><i class="fas fa-envelope"></i> Email Address</label
+            ><input
               type="email"
               id="email"
               placeholder="Enter your email"
@@ -357,19 +284,18 @@
             />
           </div>
           <div class="input-group">
-            <label><i class="fas fa-key"></i> Password</label>
-            <input
+            <label><i class="fas fa-key"></i> Password</label
+            ><input
               type="password"
               id="password"
               placeholder="Enter your password"
               required
             />
           </div>
-
           <div class="login-options">
-            <label class="checkbox-label">
-              <input type="checkbox" id="rememberMe" /> Remember me
-            </label>
+            <label class="checkbox-label"
+              ><input type="checkbox" id="rememberMe" /> Remember me</label
+            >
             <a
               href="#"
               class="forgot-link"
@@ -380,8 +306,6 @@
               >Forgot Password?</a
             >
           </div>
-
-          <!-- CAPTCHA Section -->
           <div class="captcha-container">
             <div class="captcha-display">
               <span class="captcha-code" id="captchaCode"></span>
@@ -402,12 +326,10 @@
               />
             </div>
           </div>
-
           <button type="submit" class="login-btn">
             <i class="fas fa-sign-in-alt"></i> Login
           </button>
         </form>
-
         <div class="social-login">
           <p>Or login with</p>
           <div class="social-icons">
@@ -420,12 +342,8 @@
             <div class="social-icon" onclick="socialLogin('apple')">
               <i class="fab fa-apple"></i>
             </div>
-            <div class="social-icon" onclick="socialLogin('microsoft')">
-              <i class="fab fa-microsoft"></i>
-            </div>
           </div>
         </div>
-
         <div class="signup-link">
           <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
         </div>
@@ -434,8 +352,6 @@
 
     <script>
       let currentCaptcha = "";
-
-      // Generate CAPTCHA
       function generateCaptcha() {
         const chars =
           "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789";
@@ -445,114 +361,113 @@
         }
         return captcha;
       }
-
       function refreshCaptcha() {
         currentCaptcha = generateCaptcha();
         document.getElementById("captchaCode").textContent = currentCaptcha;
         document.getElementById("captchaInput").value = "";
       }
-
-      // Show error message
-      function showError(message) {
-        const errorDiv = document.getElementById("errorMessage");
-        errorDiv.textContent = message;
-        errorDiv.style.display = "block";
-        setTimeout(() => {
-          errorDiv.style.display = "none";
-        }, 4000);
+      function showError(m) {
+        const d = document.getElementById("errorMessage");
+        d.textContent = m;
+        d.style.display = "block";
+        setTimeout(() => (d.style.display = "none"), 4000);
       }
-
-      function showSuccess(message) {
-        const successDiv = document.getElementById("successMessage");
-        successDiv.textContent = message;
-        successDiv.style.display = "block";
-        setTimeout(() => {
-          successDiv.style.display = "none";
-        }, 3000);
+      function showSuccess(m) {
+        const d = document.getElementById("successMessage");
+        d.textContent = m;
+        d.style.display = "block";
+        setTimeout(() => (d.style.display = "none"), 3000);
       }
-
-      // Forgot password
       function forgotPassword() {
         const email = document.getElementById("email").value;
-        if (email && email.includes("@")) {
+        if (email && email.includes("@"))
           showSuccess(`Password reset link sent to ${email}`);
-        } else {
-          showError("Please enter your email address first");
-        }
+        else showError("Please enter your email address first");
       }
-
-      // Social login (demo)
       function socialLogin(provider) {
         showSuccess(`Logging in with ${provider}...`);
-        setTimeout(() => {
-          window.location.href = "../dashboard.html";
-        }, 1500);
+        setTimeout(() => (window.location.href = "../dashboard.html"), 1500);
       }
-
-      // Check if user is already logged in
-      function checkLoggedIn() {
-        const loggedIn = localStorage.getItem("isLoggedIn");
-        if (loggedIn === "true") {
-          window.location.href = "../dashboard.html";
+      function checkLoginStatus() {
+        const isLoggedIn =
+          localStorage.getItem("isLoggedIn") === "true" ||
+          sessionStorage.getItem("isLoggedIn") === "true";
+        const loginLink = document.getElementById("loginLink");
+        const logoutLink = document.getElementById("logoutLink");
+        if (isLoggedIn) {
+          if (loginLink) loginLink.style.display = "none";
+          if (logoutLink) logoutLink.style.display = "inline-block";
+        } else {
+          if (loginLink) loginLink.style.display = "inline-block";
+          if (logoutLink) logoutLink.style.display = "none";
         }
       }
+      function logout() {
+        localStorage.clear();
+        sessionStorage.clear();
+        alert("Logged out successfully!");
+        window.location.href = "../index.html";
+      }
 
-      // Login form submission
       document.getElementById("loginForm").addEventListener("submit", (e) => {
         e.preventDefault();
-
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
         const userCaptcha = document.getElementById("captchaInput").value;
         const rememberMe = document.getElementById("rememberMe").checked;
-
-        // Validate CAPTCHA
         if (userCaptcha !== currentCaptcha) {
           showError("Invalid CAPTCHA! Please try again.");
           refreshCaptcha();
           return;
         }
-
-        // Validate email and password
         if (!email || !password) {
           showError("Please enter both email and password");
           return;
         }
-
-        // Demo login validation
         if (email === "demo@itpro.com" && password === "demo123") {
-          showSuccess("Login successful! Redirecting to dashboard...");
-
+          showSuccess("Welcome back! Redirecting to dashboard...");
           if (rememberMe) {
             localStorage.setItem("isLoggedIn", "true");
             localStorage.setItem("userEmail", email);
+            localStorage.setItem("userRole", "user");
           } else {
             sessionStorage.setItem("isLoggedIn", "true");
             sessionStorage.setItem("userEmail", email);
+            sessionStorage.setItem("userRole", "user");
           }
-
-          setTimeout(() => {
-            window.location.href = "../dashboard.html";
-          }, 1500);
+          setTimeout(() => (window.location.href = "../dashboard.html"), 1500);
+        } else if (email === "admin@itpro.com" && password === "admin123") {
+          showSuccess("Admin access granted! Redirecting to admin panel...");
+          if (rememberMe) {
+            localStorage.setItem("isLoggedIn", "true");
+            localStorage.setItem("userEmail", email);
+            localStorage.setItem("userRole", "admin");
+            localStorage.setItem("adminToken", "demo-admin-token");
+          } else {
+            sessionStorage.setItem("isLoggedIn", "true");
+            sessionStorage.setItem("userEmail", email);
+            sessionStorage.setItem("userRole", "admin");
+            sessionStorage.setItem("adminToken", "demo-admin-token");
+          }
+          setTimeout(() => (window.location.href = "../admin.html"), 1500);
         } else {
-          showError("Invalid email or password. Try demo@itpro.com / demo123");
+          showError(
+            "Invalid email or password. Try demo@itpro.com / demo123 or admin@itpro.com / admin123",
+          );
           refreshCaptcha();
         }
       });
 
-      // Load saved email if remembered
       function loadSavedEmail() {
-        const savedEmail = localStorage.getItem("userEmail");
-        if (savedEmail) {
-          document.getElementById("email").value = savedEmail;
+        const saved = localStorage.getItem("userEmail");
+        if (saved) {
+          document.getElementById("email").value = saved;
           document.getElementById("rememberMe").checked = true;
         }
       }
-
-      // Initialize
-      checkLoggedIn();
       refreshCaptcha();
       loadSavedEmail();
+      checkLoginStatus();
     </script>
   </body>
 </html>

@@ -1,15 +1,14 @@
 ﻿<!doctype html>
 <html lang="en">
   <head>
-    <!-- SEO Meta Tags -->
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="IT Pro Solutions - Professional remote IT support via AnyDesk. 24/7 technical assistance, virus removal, software installation, hardware diagnostics, and network setup."
+      content="IT Pro Solutions - Professional remote IT support via AnyDesk."
     />
     <meta
       name="keywords"
-      content="IT support, remote support, AnyDesk, virus removal, tech support, computer repair, software installation, hardware diagnosis, network setup, data recovery"
+      content="IT support, remote support, AnyDesk, virus removal"
     />
     <meta name="author" content="IT Pro Solutions" />
     <meta
@@ -17,55 +16,36 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph Meta Tags -->
     <meta
       property="og:title"
       content="IT Pro Solutions - Remote IT Support 24/7"
     />
     <meta
       property="og:description"
-      content="Professional IT services delivered remotely via AnyDesk. Fast, reliable, and affordable."
+      content="Professional IT services delivered remotely via AnyDesk."
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="assets/images/branding/logo.png" />
-    <meta property="og:site_name" content="IT Pro Solutions" />
-
-    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="IT Pro Solutions - Remote IT Support" />
-    <meta
-      name="twitter:description"
-      content="24/7 professional IT support via AnyDesk."
-    />
-
-    <!-- Favicon -->
     <link
       rel="icon"
       type="image/x-icon"
       href="assets/images/branding/favicon.ico"
     />
     <link rel="apple-touch-icon" href="assets/images/branding/logo.png" />
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-
-    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
-
     <title>IT Pro Solutions - Remote IT Services 24/7</title>
-
     <style>
       .hero {
         min-height: 80vh;
@@ -89,6 +69,242 @@
         height: 40px;
         vertical-align: middle;
       }
+      .logout-link {
+        color: #ff6b6b !important;
+      }
+      .logout-link:hover {
+        background: #ff6b6b !important;
+        color: white !important;
+      }
+
+      /* Chat Widget Styles */
+      .chat-widget {
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        z-index: 9999;
+      }
+      .chat-toggle-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+      }
+      .chat-toggle-btn:hover {
+        transform: scale(1.1);
+      }
+      .chat-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #ff4444;
+        color: white;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pulse 1.5s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+      .chat-window {
+        position: fixed;
+        bottom: 180px;
+        right: 20px;
+        width: 380px;
+        height: 500px;
+        background: rgba(20, 20, 40, 0.98);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(102, 126, 234, 0.3);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 10000;
+        animation: slideUp 0.3s ease;
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .chat-window.open {
+        display: flex;
+      }
+      .chat-header {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .chat-header h4 {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: white;
+      }
+      .online-indicator {
+        width: 10px;
+        height: 10px;
+        background: #4caf50;
+        border-radius: 50%;
+        display: inline-block;
+        animation: blink 1s infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+      .close-chat {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      .close-chat:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+      .chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .message {
+        max-width: 80%;
+        padding: 0.5rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
+      }
+      .message.user {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        align-self: flex-end;
+        border-bottom-right-radius: 4px;
+        color: white;
+      }
+      .message.support {
+        background: rgba(255, 255, 255, 0.1);
+        align-self: flex-start;
+        border-bottom-left-radius: 4px;
+        color: #e2e8f0;
+      }
+      .message small {
+        font-size: 0.65rem;
+        opacity: 0.7;
+        display: block;
+        margin-top: 4px;
+      }
+      .typing-indicator {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        color: #ffd89b;
+        display: none;
+      }
+      .chat-input-area {
+        padding: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        gap: 0.5rem;
+      }
+      .chat-input-area input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 25px;
+        color: white;
+        font-size: 0.85rem;
+      }
+      .chat-input-area input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .chat-input-area button {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border: none;
+        padding: 0.75rem 1rem;
+        border-radius: 25px;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .chat-input-area button:hover {
+        transform: scale(1.05);
+      }
+      .anydesk-btn {
+        margin: 0.5rem 1rem 1rem 1rem;
+        padding: 0.5rem;
+        background: rgba(255, 87, 34, 0.15);
+        border: 1px solid #ff5722;
+        border-radius: 8px;
+        color: #ff5722;
+        cursor: pointer;
+        font-size: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        transition: all 0.2s;
+      }
+      .anydesk-btn:hover {
+        background: #ff5722;
+        color: white;
+      }
+      @media (max-width: 480px) {
+        .chat-window {
+          width: calc(100vw - 40px);
+          right: 20px;
+          left: 20px;
+          height: 450px;
+        }
+      }
+      .chat-messages::-webkit-scrollbar {
+        width: 5px;
+      }
+      .chat-messages::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .chat-messages::-webkit-scrollbar-thumb {
+        background: #667eea;
+        border-radius: 5px;
+      }
     </style>
   </head>
   <body>
@@ -108,7 +324,19 @@
           <a href="company.html">COMPANY</a>
           <a href="dashboard.html">DASHBOARD</a>
           <a href="news.html">NEWS</a>
-          <a href="pages/login.html">LOGIN</a>
+          <a href="pages/login.html" id="loginLink">LOGIN</a>
+          <a
+            href="#"
+            onclick="
+              logout();
+              return false;
+            "
+            id="logoutLink"
+            style="display: none"
+            class="logout-link"
+          >
+            <i class="fas fa-sign-out-alt"></i> LOGOUT
+          </a>
         </div>
         <div class="search-bar">
           <input type="text" placeholder="Search services..." />
@@ -161,287 +389,22 @@
       </section>
     </main>
 
-    <!-- Real-Time Live Chat Widget -->
-    <style>
-      .chat-widget {
-        position: fixed;
-        bottom: 100px;
-        right: 20px;
-        z-index: 9999;
-      }
-
-      .chat-toggle-btn {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        border: none;
-        cursor: pointer;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.5rem;
-      }
-
-      .chat-toggle-btn:hover {
-        transform: scale(1.1);
-      }
-
-      .chat-badge {
-        position: absolute;
-        top: -5px;
-        right: -5px;
-        background: #ff4444;
-        color: white;
-        border-radius: 50%;
-        width: 22px;
-        height: 22px;
-        font-size: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        animation: pulse 1.5s infinite;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.2);
-        }
-      }
-
-      .chat-window {
-        position: fixed;
-        bottom: 180px;
-        right: 20px;
-        width: 380px;
-        height: 500px;
-        background: rgba(20, 20, 40, 0.98);
-        backdrop-filter: blur(20px);
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(102, 126, 234, 0.3);
-        display: none;
-        flex-direction: column;
-        overflow: hidden;
-        z-index: 10000;
-        animation: slideUp 0.3s ease;
-      }
-
-      @keyframes slideUp {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .chat-window.open {
-        display: flex;
-      }
-
-      .chat-header {
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        padding: 1rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .chat-header h4 {
-        margin: 0;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: white;
-      }
-
-      .online-indicator {
-        width: 10px;
-        height: 10px;
-        background: #4caf50;
-        border-radius: 50%;
-        display: inline-block;
-        animation: blink 1s infinite;
-      }
-
-      @keyframes blink {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.5;
-        }
-      }
-
-      .close-chat {
-        background: rgba(255, 255, 255, 0.2);
-        border: none;
-        color: white;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        cursor: pointer;
-        font-size: 1rem;
-      }
-
-      .close-chat:hover {
-        background: rgba(255, 255, 255, 0.3);
-      }
-
-      .chat-messages {
-        flex: 1;
-        overflow-y: auto;
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-
-      .message {
-        max-width: 80%;
-        padding: 0.5rem 0.75rem;
-        border-radius: 12px;
-        font-size: 0.85rem;
-      }
-
-      .message.user {
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        align-self: flex-end;
-        border-bottom-right-radius: 4px;
-        color: white;
-      }
-
-      .message.support {
-        background: rgba(255, 255, 255, 0.1);
-        align-self: flex-start;
-        border-bottom-left-radius: 4px;
-        color: #e2e8f0;
-      }
-
-      .message small {
-        font-size: 0.65rem;
-        opacity: 0.7;
-        display: block;
-        margin-top: 4px;
-      }
-
-      .typing-indicator {
-        padding: 0.5rem 1rem;
-        font-size: 0.75rem;
-        color: #ffd89b;
-        display: none;
-      }
-
-      .chat-input-area {
-        padding: 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        display: flex;
-        gap: 0.5rem;
-      }
-
-      .chat-input-area input {
-        flex: 1;
-        padding: 0.75rem;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 25px;
-        color: white;
-        font-size: 0.85rem;
-      }
-
-      .chat-input-area input::placeholder {
-        color: rgba(255, 255, 255, 0.5);
-      }
-
-      .chat-input-area button {
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        border: none;
-        padding: 0.75rem 1rem;
-        border-radius: 25px;
-        color: white;
-        cursor: pointer;
-        transition: transform 0.2s;
-      }
-
-      .chat-input-area button:hover {
-        transform: scale(1.05);
-      }
-
-      .anydesk-btn {
-        margin: 0.5rem 1rem 1rem 1rem;
-        padding: 0.5rem;
-        background: rgba(255, 87, 34, 0.15);
-        border: 1px solid #ff5722;
-        border-radius: 8px;
-        color: #ff5722;
-        cursor: pointer;
-        font-size: 0.75rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        transition: all 0.2s;
-      }
-
-      .anydesk-btn:hover {
-        background: #ff5722;
-        color: white;
-      }
-
-      @media (max-width: 480px) {
-        .chat-window {
-          width: calc(100vw - 40px);
-          right: 20px;
-          left: 20px;
-          height: 450px;
-        }
-      }
-
-      .chat-messages::-webkit-scrollbar {
-        width: 5px;
-      }
-
-      .chat-messages::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1);
-      }
-
-      .chat-messages::-webkit-scrollbar-thumb {
-        background: #667eea;
-        border-radius: 5px;
-      }
-    </style>
-
+    <!-- Chat Widget -->
     <div class="chat-widget">
       <button class="chat-toggle-btn" onclick="toggleChat()">
         <i class="fas fa-comment"></i>
         <span class="chat-badge" id="chatBadge">●</span>
       </button>
     </div>
-
     <div class="chat-window" id="chatWindow">
       <div class="chat-header">
-        <h4>
-          <span class="online-indicator"></span>
-          IT Pro Support
-        </h4>
+        <h4><span class="online-indicator"></span> IT Pro Support</h4>
         <button class="close-chat" onclick="toggleChat()">✕</button>
       </div>
       <div class="chat-messages" id="chatMessages">
         <div class="message support">
-          👋 Hello! Welcome to IT Pro Solutions support.<br />
-          How can I help you today?
-          <small>Just now</small>
+          👋 Hello! Welcome to IT Pro Solutions support.<br />How can I help you
+          today?<small>Just now</small>
         </div>
       </div>
       <div class="typing-indicator" id="typingIndicator">
@@ -463,11 +426,15 @@
       </button>
     </div>
 
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
     <script>
       let chatSocket = null;
       let userName =
-        localStorage.getItem("chatUserName") ||
+        localStorage.getItem("userEmail") ||
+        sessionStorage.getItem("userEmail") ||
         "Guest_" + Math.floor(Math.random() * 10000);
+      let userId =
+        localStorage.getItem("userId") || sessionStorage.getItem("userId");
 
       function initSocket() {
         if (typeof io !== "undefined") {
@@ -476,207 +443,204 @@
               transports: ["websocket", "polling"],
               reconnection: true,
             });
-
-            chatSocket.on("connect", () => {
-              console.log("✅ Chat connected to server");
+            chatSocket.on("connect", function () {
+              console.log("Chat connected");
               document.getElementById("chatBadge").innerHTML = "●";
               document.getElementById("chatBadge").style.background = "#4caf50";
+              chatSocket.emit("identify", {
+                userId: userId,
+                userName: userName,
+                isAdmin: false,
+              });
             });
-
-            chatSocket.on("disconnect", () => {
-              console.log("❌ Chat disconnected");
+            chatSocket.on("disconnect", function () {
               document.getElementById("chatBadge").innerHTML = "!";
               document.getElementById("chatBadge").style.background = "#ff9800";
             });
-
-            chatSocket.on("chat-history", (messages) => {
-              const container = document.getElementById("chatMessages");
-              if (messages && messages.length > 0) {
-                container.innerHTML = messages
-                  .map(
-                    (msg) => `
-                                <div class="message ${msg.is_admin_reply ? "support" : "user"}">
-                                    <strong>${escapeHtml(msg.user_name)}:</strong> ${escapeHtml(msg.message)}
-                                    <small>${new Date(msg.created_at).toLocaleTimeString()}</small>
-                                </div>
-                            `,
-                  )
-                  .join("");
-              }
-            });
-
-            chatSocket.on("new-message", (msg) => {
-              const container = document.getElementById("chatMessages");
-              container.innerHTML += `
-                            <div class="message ${msg.is_admin_reply ? "support" : "user"}">
-                                <strong>${escapeHtml(msg.user_name)}:</strong> ${escapeHtml(msg.message)}
-                                <small>${new Date().toLocaleTimeString()}</small>
-                            </div>
-                        `;
+            chatSocket.on("admin-reply", function (data) {
+              var container = document.getElementById("chatMessages");
+              container.innerHTML +=
+                '<div class="message support"><strong>Support:</strong> ' +
+                escapeHtml(data.message) +
+                "<small>" +
+                new Date().toLocaleTimeString() +
+                "</small></div>";
               container.scrollTop = container.scrollHeight;
             });
-
-            chatSocket.on("typing", (data) => {
-              const indicator = document.getElementById("typingIndicator");
-              if (data.isTyping) {
-                indicator.style.display = "block";
-                setTimeout(() => {
-                  indicator.style.display = "none";
-                }, 2000);
-              } else {
-                indicator.style.display = "none";
-              }
-            });
           } catch (e) {
-            console.log("Socket.io connection error - running in demo mode");
-            showDemoMessage();
+            console.log("Socket.io error - demo mode");
           }
-        } else {
-          console.log("Socket.io not loaded - running in demo mode");
-          showDemoMessage();
         }
       }
 
-      function showDemoMessage() {
-        const container = document.getElementById("chatMessages");
-        container.innerHTML += `
-                <div class="message support">
-                    ⚡ Live chat ready! Start backend with: <code style="background:#333;padding:2px 6px;border-radius:4px;">node backend/server.js</code>
-                    <small>Demo mode - Your messages will be received</small>
-                </div>
-            `;
-      }
-
       function toggleChat() {
-        const chatWindow = document.getElementById("chatWindow");
-        chatWindow.classList.toggle("open");
-        if (chatWindow.classList.contains("open")) {
+        var w = document.getElementById("chatWindow");
+        w.classList.toggle("open");
+        if (w.classList.contains("open")) {
           document.getElementById("chatBadge").innerHTML = "●";
           document.getElementById("chatInput").focus();
         }
       }
 
       function sendMessage() {
-        const input = document.getElementById("chatInput");
-        const message = input.value.trim();
-
+        var input = document.getElementById("chatInput");
+        var message = input.value.trim();
         if (!message) return;
-
-        const container = document.getElementById("chatMessages");
-        container.innerHTML += `
-                <div class="message user">
-                    <strong>You:</strong> ${escapeHtml(message)}
-                    <small>Just now</small>
-                </div>
-            `;
+        var container = document.getElementById("chatMessages");
+        container.innerHTML +=
+          '<div class="message user"><strong>You:</strong> ' +
+          escapeHtml(message) +
+          "<small>Just now</small></div>";
         container.scrollTop = container.scrollHeight;
 
         if (chatSocket && chatSocket.connected) {
           chatSocket.emit("send-message", {
-            userId: localStorage.getItem("userId") || null,
+            userId: userId,
             userName: userName,
             message: message,
           });
-
-          setTimeout(() => {
-            container.innerHTML += `
-                        <div class="message support">
-                            <strong>Support:</strong> Thanks for your message! Our team will respond shortly.
-                            <small>Just now</small>
-                        </div>
-                    `;
-            container.scrollTop = container.scrollHeight;
-          }, 1000);
-        } else {
-          setTimeout(() => {
-            container.innerHTML += `
-                        <div class="message support">
-                            <strong>Support (Auto-Reply):</strong> Thank you for contacting IT Pro Solutions. We've received your message and will get back to you within 5 minutes.
-                            <small>Just now</small>
-                        </div>
-                    `;
-            container.scrollTop = container.scrollHeight;
-          }, 500);
         }
-
         input.value = "";
       }
 
       function handleKeyPress(event) {
-        if (event.key === "Enter") {
-          sendMessage();
-        }
+        if (event.key === "Enter") sendMessage();
+      }
+
+      function requestAnyDesk() {
+        var container = document.getElementById("chatMessages");
+        container.innerHTML +=
+          '<div class="message user"><strong>You:</strong> 📞 Requesting AnyDesk remote support<small>Just now</small></div>';
+        container.scrollTop = container.scrollHeight;
 
         if (chatSocket && chatSocket.connected) {
-          chatSocket.emit("typing", { isTyping: true });
-          clearTimeout(window.typingTimeout);
-          window.typingTimeout = setTimeout(() => {
-            chatSocket.emit("typing", { isTyping: false });
+          chatSocket.emit("anydesk-request", {
+            userId: userId,
+            userName: userName,
+          });
+          setTimeout(function () {
+            container.innerHTML +=
+              '<div class="message support"><strong>Support:</strong> AnyDesk request received! An admin will provide connection details shortly.<small>Just now</small></div>';
+            container.scrollTop = container.scrollHeight;
+          }, 1000);
+        } else {
+          setTimeout(function () {
+            container.innerHTML +=
+              '<div class="message support"><strong>Support:</strong> AnyDesk request received! Please wait for an admin to respond.<small>Just now</small></div>';
+            container.scrollTop = container.scrollHeight;
           }, 1000);
         }
       }
 
-      function requestAnyDesk() {
-        const container = document.getElementById("chatMessages");
-        container.innerHTML += `
-                <div class="message user">
-                    <strong>You:</strong> 📞 Requesting AnyDesk remote support
-                    <small>Just now</small>
-                </div>
-            `;
-        container.scrollTop = container.scrollHeight;
-
-        setTimeout(() => {
-          container.innerHTML += `
-                    <div class="message support">
-                        <strong>Support:</strong> Here's your AnyDesk connection info:<br><br>
-                        📱 <strong>AnyDesk ID:</strong> <code style="background:#333;padding:2px 6px;border-radius:4px;">123 456 789</code><br>
-                        🔑 <strong>Password:</strong> <code style="background:#333;padding:2px 6px;border-radius:4px;">remote123</code><br><br>
-                        Please download AnyDesk from <a href="https://anydesk.com" target="_blank" style="color: #ffd89b;">anydesk.com</a> and enter this ID.<br>
-                        Our technician will connect to your computer securely.
-                        <small>Just now</small>
-                    </div>
-                `;
-          container.scrollTop = container.scrollHeight;
-        }, 800);
-      }
-
       function escapeHtml(text) {
-        const div = document.createElement("div");
+        var div = document.createElement("div");
         div.textContent = text;
         return div.innerHTML;
       }
 
-      document.addEventListener("DOMContentLoaded", () => {
-        initSocket();
+      var services = [
+        {
+          name: "AnyDesk Support",
+          price: "$49",
+          icon: "fa-desktop",
+          description: "24/7 remote assistance",
+        },
+        {
+          name: "Virus Removal",
+          price: "$79",
+          icon: "fa-shield-virus",
+          description: "Complete malware cleanup",
+        },
+        {
+          name: "Software Installation",
+          price: "$39",
+          icon: "fa-download",
+          description: "Any software installation",
+        },
+        {
+          name: "Hardware Diagnosis",
+          price: "$59",
+          icon: "fa-microchip",
+          description: "Full hardware checkup",
+        },
+        {
+          name: "Network Setup",
+          price: "$99",
+          icon: "fa-network-wired",
+          description: "Router & network config",
+        },
+        {
+          name: "Data Recovery",
+          price: "$149",
+          icon: "fa-database",
+          description: "Lost data recovery",
+        },
+      ];
 
-        if (!localStorage.getItem("chatSeen")) {
-          setTimeout(() => {
-            if (
-              !document.getElementById("chatWindow").classList.contains("open")
-            ) {
-              toggleChat();
-              localStorage.setItem("chatSeen", "true");
-            }
-          }, 10000);
+      function loadServices() {
+        var grid = document.getElementById("servicesGrid");
+        if (grid) {
+          var html = "";
+          for (var i = 0; i < services.length; i++) {
+            var s = services[i];
+            html +=
+              '<div class="service-card"><i class="fas ' +
+              s.icon +
+              ' fa-2x"></i><h3>' +
+              s.name +
+              "</h3><p>" +
+              s.description +
+              "</p><h2>" +
+              s.price +
+              '</h2><button class="btn-primary" onclick="addToCart(\'' +
+              s.name +
+              "', '" +
+              s.price +
+              "')\">Book Now</button></div>";
+          }
+          grid.innerHTML = html;
         }
-      });
-    </script>
-
-    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-    <script src="js/main.js"></script>
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "IT Pro Solutions",
-        "description": "Professional remote IT support services via AnyDesk",
-        "url": "https://yourdomain.com",
-        "priceRange": "$$",
-        "openingHours": "Mo-Su 00:00-23:59"
       }
+
+      function addToCart(name, price) {
+        var cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        cart.push({
+          name: name,
+          price: price,
+          quantity: 1,
+          timestamp: new Date(),
+        });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(name + " added to cart!");
+      }
+
+      function checkLoginStatus() {
+        var isLoggedIn =
+          localStorage.getItem("isLoggedIn") === "true" ||
+          sessionStorage.getItem("isLoggedIn") === "true";
+        var loginLink = document.getElementById("loginLink");
+        var logoutLink = document.getElementById("logoutLink");
+        if (isLoggedIn) {
+          if (loginLink) loginLink.style.display = "none";
+          if (logoutLink) logoutLink.style.display = "inline-block";
+        } else {
+          if (loginLink) loginLink.style.display = "inline-block";
+          if (logoutLink) logoutLink.style.display = "none";
+        }
+      }
+
+      function logout() {
+        localStorage.clear();
+        sessionStorage.clear();
+        alert("Logged out successfully!");
+        window.location.href = "index.html";
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        loadServices();
+        checkLoginStatus();
+        initSocket();
+      });
     </script>
   </body>
 </html>

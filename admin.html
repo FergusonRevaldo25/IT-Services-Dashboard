@@ -1,500 +1,243 @@
-<!doctype html>
+﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Panel - IT Pro Solutions</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: "Segoe UI", sans-serif;
-        background: #1a1a2e;
-        color: white;
-      }
-      .admin-container {
-        display: flex;
-        min-height: 100vh;
-      }
-      .sidebar {
-        width: 260px;
-        background: #16213e;
-        padding: 2rem;
-      }
-      .sidebar h2 {
-        margin-bottom: 2rem;
-        color: #667eea;
-      }
-      .sidebar nav a {
-        display: block;
-        padding: 0.75rem;
-        color: white;
-        text-decoration: none;
-        margin: 0.5rem 0;
-        border-radius: 8px;
-        transition: all 0.3s;
-      }
-      .sidebar nav a:hover,
-      .sidebar nav a.active {
-        background: #667eea;
-      }
-      .content {
-        flex: 1;
-        padding: 2rem;
-        overflow-x: auto;
-      }
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-        margin-bottom: 2rem;
-      }
-      .stat-card {
-        background: #16213e;
-        padding: 1.5rem;
-        border-radius: 12px;
-        text-align: center;
-      }
-      .stat-card h3 {
-        font-size: 2rem;
-        color: #ffd89b;
-      }
-      table {
-        width: 100%;
-        background: #16213e;
-        border-radius: 12px;
-        overflow: hidden;
-      }
-      th,
-      td {
-        padding: 1rem;
-        text-align: left;
-        border-bottom: 1px solid #2a2a4a;
-      }
-      .status {
-        padding: 0.25rem 0.5rem;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        display: inline-block;
-      }
-      .status-pending {
-        background: #ff9800;
-      }
-      .status-processing {
-        background: #2196f3;
-      }
-      .status-completed {
-        background: #4caf50;
-      }
-      button,
-      select {
-        background: #667eea;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        color: white;
-        cursor: pointer;
-      }
-      .login-section {
-        max-width: 400px;
-        margin: 100px auto;
-        background: #16213e;
-        padding: 2rem;
-        border-radius: 15px;
-        text-align: center;
-      }
-      .login-section input {
-        width: 100%;
-        padding: 0.75rem;
-        margin: 0.5rem 0;
-        border-radius: 8px;
-        border: none;
-        background: #0f0f23;
-        color: white;
-      }
-      .login-section button {
-        width: 100%;
-        margin-top: 1rem;
-        padding: 0.75rem;
-      }
-      .error-msg {
-        color: #ff6b6b;
-        margin-top: 0.5rem;
-        display: none;
-      }
-      .loading {
-        text-align: center;
-        padding: 2rem;
-      }
-      @media (max-width: 768px) {
-        .admin-container {
-          flex-direction: column;
-        }
-        .sidebar {
-          width: 100%;
-          padding: 1rem;
-        }
-        .content {
-          padding: 1rem;
-        }
-      }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; }
+        .login-box { max-width: 400px; margin: 100px auto; background: #16213e; padding: 2rem; border-radius: 10px; text-align: center; }
+        .login-box input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; background: #0f0f23; color: white; }
+        .login-box button { width: 100%; padding: 10px; background: #667eea; border: none; color: white; border-radius: 5px; cursor: pointer; }
+        .admin-panel { display: none; }
+        .sidebar { width: 250px; background: #16213e; padding: 1rem; position: fixed; height: 100%; overflow-y: auto; }
+        .content { margin-left: 250px; padding: 2rem; }
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card { background: #16213e; padding: 1rem; border-radius: 10px; text-align: center; }
+        .stat-card h3 { font-size: 2rem; color: #ffd89b; }
+        .nav-link { display: block; padding: 10px; margin: 5px 0; background: #0f0f23; border-radius: 5px; cursor: pointer; text-decoration: none; color: white; }
+        .nav-link:hover { background: #667eea; }
+        table { width: 100%; background: #16213e; border-radius: 10px; border-collapse: collapse; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #2a2a4a; }
+        .message-item { background: #16213e; padding: 1rem; margin: 0.5rem 0; border-radius: 5px; }
+        .error-msg { color: #ff6b6b; margin-top: 10px; }
+        .success-msg { color: #4caf50; margin-top: 10px; }
+        @media (max-width: 768px) { .sidebar { width: 100%; position: relative; height: auto; } .content { margin-left: 0; } .stats { grid-template-columns: repeat(2, 1fr); } }
     </style>
-  </head>
-  <body>
-    <div id="app">
-      <!-- Login Screen -->
-      <div id="loginScreen" class="login-section">
-        <i class="fas fa-crown fa-3x" style="color: #667eea"></i>
-        <h2 style="margin: 1rem 0">Admin Login</h2>
-        <p style="margin-bottom: 1rem; font-size: 0.8rem">
-          Demo: admin@itpro.com / admin123
-        </p>
-        <input
-          type="email"
-          id="adminEmail"
-          placeholder="Email"
-          value="admin@itpro.com"
-        />
-        <input
-          type="password"
-          id="adminPassword"
-          placeholder="Password"
-          value="admin123"
-        />
-        <button onclick="adminLogin()">Login to Admin Panel</button>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-box">
+        <i class="fas fa-crown fa-3x" style="color: #667eea;"></i>
+        <h2>Admin Login</h2>
+        <p style="margin: 10px 0; font-size: 12px;">admin@itpro.com / admin123</p>
+        <input type="email" id="adminEmail" placeholder="Email" value="admin@itpro.com">
+        <input type="password" id="adminPassword" placeholder="Password" value="admin123">
+        <button onclick="doAdminLogin()">Login</button>
         <div id="loginError" class="error-msg"></div>
-      </div>
+    </div>
 
-      <!-- Admin Dashboard -->
-      <div id="adminDashboard" style="display: none">
-        <div class="admin-container">
-          <div class="sidebar">
-            <h2><i class="fas fa-crown"></i> Admin Panel</h2>
-            <nav>
-              <a
-                href="#"
-                onclick="
-                  showSection('dashboard');
-                  return false;
-                "
-                ><i class="fas fa-chart-line"></i> Dashboard</a
-              >
-              <a
-                href="#"
-                onclick="
-                  showSection('orders');
-                  return false;
-                "
-                ><i class="fas fa-shopping-cart"></i> Orders</a
-              >
-              <a
-                href="#"
-                onclick="
-                  showSection('users');
-                  return false;
-                "
-                ><i class="fas fa-users"></i> Users</a
-              >
-              <a
-                href="#"
-                onclick="
-                  logout();
-                  return false;
-                "
-                ><i class="fas fa-sign-out-alt"></i> Logout</a
-              >
-              <a href="index.html"><i class="fas fa-home"></i> Back to Site</a>
-            </nav>
-          </div>
-          <div class="content" id="adminContent">
-            <!-- Dynamic content will load here -->
-            <div class="loading">Loading dashboard...</div>
-          </div>
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-panel">
+        <div class="sidebar">
+            <h3><i class="fas fa-crown"></i> Admin Panel</h3>
+            <div class="nav-link" onclick="loadDashboard()">📊 Dashboard</div>
+            <div class="nav-link" onclick="loadOrders()">📦 Orders</div>
+            <div class="nav-link" onclick="loadChats()">💬 Live Chats</div>
+            <div class="nav-link" onclick="loadAnyDesk()">🖥️ AnyDesk Requests</div>
+            <div class="nav-link" onclick="doAdminLogout()">🚪 Logout</div>
+            <div class="nav-link" onclick="window.location.href='index.html'">🏠 Back to Site</div>
         </div>
-      </div>
+        <div class="content" id="adminContent">
+            <div style="text-align: center; padding: 2rem;">Loading dashboard...</div>
+        </div>
     </div>
 
     <script>
-      let adminToken = localStorage.getItem("adminToken");
+        let adminToken = null;
 
-      // API call function
-      async function apiCall(endpoint, options = {}) {
-        const response = await fetch(`http://localhost:3000${endpoint}`, {
-          ...options,
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: adminToken ? `Bearer ${adminToken}` : "",
-          },
-        });
-
-        if (response.status === 401) {
-          logout();
-          throw new Error("Session expired");
+        async function doAdminLogin() {
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            const errorDiv = document.getElementById('loginError');
+            errorDiv.textContent = '';
+            
+            try {
+                const response = await fetch('http://localhost:3000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                console.log('Login response:', data);
+                
+                if (response.ok && data.user) {
+                    adminToken = data.token;
+                    localStorage.setItem('adminToken', adminToken);
+                    localStorage.setItem('adminUser', JSON.stringify(data.user));
+                    
+                    document.getElementById('loginScreen').style.display = 'none';
+                    document.getElementById('adminDashboard').style.display = 'block';
+                    
+                    await loadDashboard();
+                } else {
+                    errorDiv.textContent = 'Login failed: ' + (data.error || 'Invalid credentials');
+                }
+            } catch(err) {
+                errorDiv.textContent = 'Connection error: ' + err.message;
+                console.error(err);
+            }
         }
 
-        return response;
-      }
-
-      // Admin Login
-      async function adminLogin() {
-        const email = document.getElementById("adminEmail").value;
-        const password = document.getElementById("adminPassword").value;
-        const errorDiv = document.getElementById("loginError");
-
-        errorDiv.style.display = "none";
-
-        try {
-          const response = await fetch("http://localhost:3000/api/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password }),
-          });
-
-          const data = await response.json();
-
-          if (response.ok && data.user && data.user.isAdmin === true) {
-            adminToken = data.token;
-            localStorage.setItem("adminToken", adminToken);
-
-            document.getElementById("loginScreen").style.display = "none";
-            document.getElementById("adminDashboard").style.display = "block";
-
-            await loadDashboard();
-          } else {
-            errorDiv.textContent =
-              "Invalid credentials or not an admin account";
-            errorDiv.style.display = "block";
-          }
-        } catch (error) {
-          errorDiv.textContent =
-            "Connection error. Make sure backend is running on port 3000";
-          errorDiv.style.display = "block";
+        async function callAdminAPI(endpoint) {
+            if (!adminToken) {
+                adminToken = localStorage.getItem('adminToken');
+            }
+            
+            const response = await fetch(`http://localhost:3000${endpoint}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${adminToken}`
+                }
+            });
+            
+            if (response.status === 401) {
+                doAdminLogout();
+                throw new Error('Session expired. Please login again.');
+            }
+            
+            return response.json();
         }
-      }
 
-      // Load Dashboard
-      async function loadDashboard() {
-        const contentDiv = document.getElementById("adminContent");
-        contentDiv.innerHTML =
-          '<div class="loading">Loading dashboard...</div>';
-
-        try {
-          const statsResponse = await apiCall("/api/admin/stats");
-          const stats = await statsResponse.json();
-
-          const ordersResponse = await apiCall("/api/admin/orders");
-          const orders = await ordersResponse.json();
-
-          // Build dashboard HTML
-          let html = `
-                    <h1>Dashboard</h1>
-                    <div class="stats-grid">
+        async function loadDashboard() {
+            const contentDiv = document.getElementById('adminContent');
+            contentDiv.innerHTML = '<div style="text-align: center; padding: 2rem;">Loading stats...</div>';
+            
+            try {
+                const stats = await callAdminAPI('/api/admin/stats');
+                contentDiv.innerHTML = `
+                    <h1>Dashboard Overview</h1>
+                    <div class="stats">
                         <div class="stat-card"><i class="fas fa-users"></i><h3>${stats.total_users || 0}</h3><p>Total Users</p></div>
                         <div class="stat-card"><i class="fas fa-shopping-cart"></i><h3>${stats.total_orders || 0}</h3><p>Total Orders</p></div>
                         <div class="stat-card"><i class="fas fa-dollar-sign"></i><h3>$${stats.revenue || 0}</h3><p>Revenue</p></div>
-                        <div class="stat-card"><i class="fas fa-clock"></i><h3>${stats.pending_orders || 0}</h3><p>Pending Orders</p></div>
+                        <div class="stat-card"><i class="fas fa-comment"></i><h3>${stats.unread_chats || 0}</h3><p>Unread Messages</p></div>
                     </div>
-                    <h2>Recent Orders</h2>
-                    <table>
-                        <thead><tr><th>Order #</th><th>Customer</th><th>Amount</th><th>Status</th></tr></thead>
-                        <tbody>
                 `;
-
-          if (Array.isArray(orders) && orders.length > 0) {
-            orders.slice(0, 5).forEach((o) => {
-              html += `
-                            <tr>
-                                <td>${o.order_number || "N/A"}</td>
-                                <td>${o.email || "Unknown"}</td>
-                                <td>$${o.total_amount || 0}</td>
-                                <td><span class="status status-${o.status || "pending"}">${o.status || "pending"}</span></td>
-                            </tr>
-                        `;
-            });
-          } else {
-            html +=
-              '<tr><td colspan="4" style="text-align: center;">No orders found</td></tr>';
-          }
-
-          html += `</tbody></table>`;
-          contentDiv.innerHTML = html;
-        } catch (error) {
-          contentDiv.innerHTML = `<div style="color: #ff6b6b; text-align: center; padding: 2rem;">Error loading dashboard: ${error.message}</div>`;
-        }
-      }
-
-      // Load Orders
-      async function loadOrders() {
-        const contentDiv = document.getElementById("adminContent");
-        contentDiv.innerHTML = '<div class="loading">Loading orders...</div>';
-
-        try {
-          const response = await apiCall("/api/admin/orders");
-          const orders = await response.json();
-
-          let html =
-            "<h1>Orders</h1><table><thead><tr><th>Order #</th><th>Customer</th><th>Email</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead><tbody>";
-
-          if (Array.isArray(orders) && orders.length > 0) {
-            orders.forEach((o) => {
-              html += `
-                            <tr>
-                                <td>${o.order_number}</td>
-                                <td>${o.username || "N/A"}</td>
-                                <td>${o.email}</td>
-                                <td>$${o.total_amount}</td>
-                                <td><span class="status status-${o.status}">${o.status}</span></td>
-                                <td>
-                                    <select onchange="updateOrderStatus(${o.id}, this.value)">
-                                        <option value="pending" ${o.status === "pending" ? "selected" : ""}>Pending</option>
-                                        <option value="processing" ${o.status === "processing" ? "selected" : ""}>Processing</option>
-                                        <option value="completed" ${o.status === "completed" ? "selected" : ""}>Completed</option>
-                                    </select>
-                                </td>
-                            </tr>
-                        `;
-            });
-          } else {
-            html +=
-              '<tr><td colspan="6" style="text-align: center;">No orders found</td></tr>';
-          }
-
-          html += "</tbody></table>";
-          contentDiv.innerHTML = html;
-        } catch (error) {
-          contentDiv.innerHTML = `<div style="color: #ff6b6b; text-align: center; padding: 2rem;">Error loading orders: ${error.message}</div>`;
-        }
-      }
-
-      // Load Users
-      async function loadUsers() {
-        const contentDiv = document.getElementById("adminContent");
-        contentDiv.innerHTML = '<div class="loading">Loading users...</div>';
-
-        try {
-          const response = await apiCall("/api/admin/users");
-          const users = await response.json();
-
-          let html =
-            "<h1>Users</h1><table><thead><tr><th>ID</th><th>Username</th><th>Email</th><th>Full Name</th><th>Admin</th><th>Joined</th></tr></thead><tbody>";
-
-          if (Array.isArray(users) && users.length > 0) {
-            users.forEach((u) => {
-              html += `
-                            <tr>
-                                <td>${u.id}</td>
-                                <td>${u.username}</td>
-                                <td>${u.email}</td>
-                                <td>${u.full_name || "-"}</td>
-                                <td>${u.is_admin ? "Yes" : "No"}</td>
-                                <td>${new Date(u.created_at).toLocaleDateString()}</td>
-                            </tr>
-                        `;
-            });
-          } else {
-            html +=
-              '<tr><td colspan="6" style="text-align: center;">No users found</td></tr>';
-          }
-
-          html += "</tbody></table>";
-          contentDiv.innerHTML = html;
-        } catch (error) {
-          contentDiv.innerHTML = `<div style="color: #ff6b6b; text-align: center; padding: 2rem;">Error loading users: ${error.message}</div>`;
-        }
-      }
-
-      // Update order status
-      async function updateOrderStatus(orderId, status) {
-        try {
-          const response = await apiCall(
-            `/api/admin/orders/${orderId}/status`,
-            {
-              method: "PUT",
-              body: JSON.stringify({ status }),
-            },
-          );
-
-          if (response.ok) {
-            alert("Order status updated!");
-            loadOrders();
-          } else {
-            alert("Error updating status");
-          }
-        } catch (error) {
-          alert("Error updating status: " + error.message);
-        }
-      }
-
-      // Show section
-      async function showSection(section) {
-        if (section === "dashboard") {
-          await loadDashboard();
-        } else if (section === "orders") {
-          await loadOrders();
-        } else if (section === "users") {
-          await loadUsers();
-        }
-
-        // Update active nav
-        document
-          .querySelectorAll(".sidebar nav a")
-          .forEach((a) => a.classList.remove("active"));
-        if (event && event.target) {
-          event.target.classList.add("active");
-        }
-      }
-
-      // Logout
-      function logout() {
-        localStorage.removeItem("adminToken");
-        adminToken = null;
-        document.getElementById("loginScreen").style.display = "block";
-        document.getElementById("adminDashboard").style.display = "none";
-        document.getElementById("adminEmail").value = "admin@itpro.com";
-        document.getElementById("adminPassword").value = "admin123";
-      }
-
-      // Check if already logged in
-      async function checkLogin() {
-        const savedToken = localStorage.getItem("adminToken");
-
-        if (savedToken) {
-          adminToken = savedToken;
-
-          // Verify token works by trying to fetch stats
-          try {
-            const response = await fetch(
-              "http://localhost:3000/api/admin/stats",
-              {
-                headers: { Authorization: `Bearer ${savedToken}` },
-              },
-            );
-
-            if (response.ok) {
-              document.getElementById("loginScreen").style.display = "none";
-              document.getElementById("adminDashboard").style.display = "block";
-              await loadDashboard();
-            } else {
-              // Token invalid
-              localStorage.removeItem("adminToken");
-              adminToken = null;
+            } catch(err) {
+                contentDiv.innerHTML = `<div style="color: #ff6b6b; text-align: center; padding: 2rem;">Error: ${err.message}</div>`;
             }
-          } catch (error) {
-            // Server not running, stay on login screen
-            console.log("Backend not running");
-          }
         }
-      }
 
-      // Initialize
-      checkLogin();
+        async function loadOrders() {
+            const contentDiv = document.getElementById('adminContent');
+            contentDiv.innerHTML = '<div style="text-align: center; padding: 2rem;">Loading orders...</div>';
+            
+            try {
+                const orders = await callAdminAPI('/api/admin/orders');
+                
+                if (!orders || orders.length === 0) {
+                    contentDiv.innerHTML = '<h1>Orders</h1><p>No orders found.</p>';
+                    return;
+                }
+                
+                let html = '<h1>Orders Management</h1><table><thead><tr><th>Order #</th><th>Customer</th><th>Email</th><th>Amount</th><th>Status</th></tr></thead><tbody>';
+                orders.forEach(o => {
+                    let statusColor = o.status === 'completed' ? '#4caf50' : (o.status === 'processing' ? '#2196f3' : '#ff9800');
+                    html += `<tr>
+                        <td>${o.order_number}</td>
+                        <td>${o.username || 'N/A'}</td>
+                        <td>${o.email}</td>
+                        <td>$${o.total_amount}</td>
+                        <td><span style="background:${statusColor};padding:2px 8px;border-radius:20px;">${o.status}</span></td>
+                    </tr>`;
+                });
+                html += '</tbody></table>';
+                contentDiv.innerHTML = html;
+            } catch(err) {
+                contentDiv.innerHTML = `<div style="color: #ff6b6b; text-align: center; padding: 2rem;">Error: ${err.message}</div>`;
+            }
+        }
+
+        async function loadChats() {
+            const contentDiv = document.getElementById('adminContent');
+            contentDiv.innerHTML = '<div style="text-align: center; padding: 2rem;">Loading chats...</div>';
+            
+            try {
+                const chats = await callAdminAPI('/api/admin/chats');
+                const userChats = chats.filter(c => c.is_admin === 0);
+                
+                if (userChats.length === 0) {
+                    contentDiv.innerHTML = '<h1>Live Customer Chats</h1><p>No customer messages yet.</p>';
+                    return;
+                }
+                
+                let html = '<h1>Live Customer Chats</h1>';
+                userChats.forEach(chat => {
+                    html += `
+                        <div class="message-item">
+                            <strong>👤 ${chat.user_name || 'Guest'}</strong>
+                            <small>${new Date(chat.created_at).toLocaleString()}</small>
+                            <p><strong>Message:</strong> ${chat.message}</p>
+                            ${chat.is_anydesk_request ? `<p style="color:#ff5722;"><strong>🖥️ AnyDesk ID:</strong> ${chat.anydesk_id}</p>` : ''}
+                        </div>
+                    `;
+                });
+                contentDiv.innerHTML = html;
+            } catch(err) {
+                contentDiv.innerHTML = `<div style="color: #ff6b6b; text-align: center; padding: 2rem;">Error: ${err.message}</div>`;
+            }
+        }
+
+        async function loadAnyDesk() {
+            const contentDiv = document.getElementById('adminContent');
+            contentDiv.innerHTML = '<div style="text-align: center; padding: 2rem;">Loading requests...</div>';
+            
+            try {
+                const chats = await callAdminAPI('/api/admin/chats');
+                const anydeskRequests = chats.filter(c => c.is_anydesk_request === 1);
+                
+                if (anydeskRequests.length === 0) {
+                    contentDiv.innerHTML = '<h1>AnyDesk Remote Support Requests</h1><p>No AnyDesk requests yet.</p>';
+                    return;
+                }
+                
+                let html = '<h1>AnyDesk Remote Support Requests</h1><table><thead><tr><th>User</th><th>Request Time</th><th>AnyDesk ID</th><th>Status</th></tr></thead><tbody>';
+                anydeskRequests.forEach(req => {
+                    html += `<tr>
+                        <td>${req.user_name || 'Guest'}</td>
+                        <td>${new Date(req.created_at).toLocaleString()}</td>
+                        <td><strong style="color:#ff5722;">${req.anydesk_id}</strong></td>
+                        <td><span style="background:${req.status === 'unread' ? '#ff4444' : '#4caf50'};padding:2px 8px;border-radius:20px;">${req.status}</span></td>
+                    </tr>`;
+                });
+                html += '</tbody></table>';
+                contentDiv.innerHTML = html;
+            } catch(err) {
+                contentDiv.innerHTML = `<div style="color: #ff6b6b; text-align: center; padding: 2rem;">Error: ${err.message}</div>`;
+            }
+        }
+
+        function doAdminLogout() {
+            localStorage.removeItem('adminToken');
+            localStorage.removeItem('adminUser');
+            adminToken = null;
+            document.getElementById('loginScreen').style.display = 'block';
+            document.getElementById('adminDashboard').style.display = 'none';
+            document.getElementById('adminEmail').value = 'admin@itpro.com';
+            document.getElementById('adminPassword').value = 'admin123';
+        }
+
+        // Check existing session on page load
+        const savedToken = localStorage.getItem('adminToken');
+        if (savedToken) {
+            adminToken = savedToken;
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('adminDashboard').style.display = 'block';
+            loadDashboard();
+        }
     </script>
-  </body>
+</body>
 </html>
